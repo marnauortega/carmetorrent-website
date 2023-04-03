@@ -1,0 +1,18 @@
+body {
+  color: black;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link,
+a:focus,
+a:visited {
+  color: black;
+}

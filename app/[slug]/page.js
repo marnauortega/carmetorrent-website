@@ -1,7 +1,7 @@
-"use client";
-
 import { postArray } from "@/data/postArray";
 import { oneOffPostArray } from "@/data/oneOffPostArray";
+
+import styles from "./page.module.css";
 
 export const generateStaticParams = () => {
   const postSlugs = postArray.map((post) => post.slug);
@@ -10,7 +10,11 @@ export const generateStaticParams = () => {
 };
 
 const postPage = ({ params }) => {
-  return <div>{params.slug}</div>;
+  return (
+    <div className={styles.content}>
+      <p>{params.slug}</p>
+    </div>
+  );
 };
 
 export default postPage;
