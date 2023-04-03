@@ -1,3 +1,6 @@
+import Logo from "@/components/Logo";
+import Nav from "@/components/Nav";
+
 export const metadata = {
   title: "Carme Torrent",
   description: "Dansa contemporània",
@@ -6,7 +9,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <aside>
+          <Logo />
+          <Nav></Nav>
+        </aside>
+        <main>{children}</main>
+      </body>
     </html>
   );
 }
