@@ -1,5 +1,7 @@
 import { workArray } from "@/data/workArray";
 import { oneOffPostArray } from "@/data/oneOffPostArray";
+import { PortableText } from "@portabletext/react";
+import MyPortableTextComponents from "@/sanity/MyPortableTextComponents";
 
 import { createClient, groq } from "next-sanity";
 import clientConfig from "@/sanity/clientConfig";
@@ -41,6 +43,7 @@ const workPage = async ({ params }) => {
           <dd className={styles.chartContent}>{chart.year}</dd>
         </dl>
       )}
+      <PortableText value={content} components={MyPortableTextComponents} />
     </div>
   );
 };

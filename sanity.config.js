@@ -5,7 +5,7 @@ import { schemaTypes } from "./sanity/schemas";
 export const config = {
   projectId: "jpoqf5n3",
   dataset: "production",
-  title: "Carme Torrent Website",
+  title: "Admin - Carme Torrent Website",
   basePath: "/admin",
   plugins: [deskTool(), visionTool()],
   schema: {
