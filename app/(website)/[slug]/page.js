@@ -11,6 +11,8 @@ function getWork(workSlug) {
   return createClient(clientConfig).fetch(groq`
   *[_type == "work" && slug.current == "${workSlug}" ]{
     title,
+    chartToggled,
+    chart,
     content
   }
   `);
@@ -24,11 +26,21 @@ export const generateStaticParams = () => {
 };
 
 const workPage = async ({ params }) => {
-  const [{ title, content }] = await getWork(params.slug);
-  console.log(title, content);
+  const [{ title, chartToggled, chart, content }] = await getWork(params.slug);
+  console.log(chartToggled, chart);
   return (
     <div className={styles.content}>
       <h1>{title}</h1>
+      {chartToggled && (
+        <dl>
+          <dt className={styles.chartTitle}>Lugar</dt>
+          <dd className={styles.chartContent}>{chart.place}</dd>
+          <dt className={styles.chartTitle}>Ciclo</dt>
+          <dd className={styles.chartContent}>{chart.cycle}</dd>
+          <dt className={styles.chartTitle}>Año</dt>
+          <dd className={styles.chartContent}>{chart.year}</dd>
+        </dl>
+      )}
     </div>
   );
 };

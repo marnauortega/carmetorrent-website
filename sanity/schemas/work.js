@@ -17,6 +17,37 @@ export default {
       },
     },
     {
+      name: "chartToggled",
+      title: "Activar Graella",
+      type: "boolean",
+    },
+    {
+      name: "chart",
+      title: "Graella",
+      type: "object",
+      hidden: ({ document }) => !document?.chartToggled,
+      fields: [
+        {
+          name: "place",
+          title: "Lloc",
+          type: "string",
+        },
+        {
+          name: "cycle",
+          title: "Cicle",
+          type: "string",
+        },
+        {
+          name: "year",
+          title: "Any",
+          type: "string",
+        },
+      ],
+      // options: {
+      //   collapsible: true,
+      // },
+    },
+    {
       name: "content",
       title: "Contingut",
       type: "array",
