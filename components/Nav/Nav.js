@@ -1,11 +1,17 @@
 import Link from "next/link";
-import { workArray } from "@/data/workArray";
+
+import { getAllWorkTitlesAndSlugs } from "@/sanity/queries/queries";
+
 import styles from "./Nav.module.css";
 
-const Nav = () => {
+const Nav = async () => {
+  const workTitles = await getAllWorkTitlesAndSlugs();
+
+  console.log(workTitles);
+
   return (
     <ul className={styles.navList}>
-      {workArray.map(({ title, slug }) => (
+      {workTitles.map(({ title, slug }) => (
         <li key={slug}>
           <Link href={slug}>{title}</Link>
         </li>

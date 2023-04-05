@@ -1,10 +1,12 @@
 .body {
   display: flex;
   margin: 0;
-  min-height: 100vh;
 }
 
 .aside {
+  height: 100vh;
+  position: sticky;
+  top: 0;
   width: 428px;
   padding: 70px;
   box-sizing: border-box;
