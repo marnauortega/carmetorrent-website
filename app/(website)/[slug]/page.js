@@ -1,16 +1,14 @@
-import { oneOffPostArray } from "@/data/oneOffPostArray";
 import { PortableText } from "@portabletext/react";
 import MyPortableTextComponents from "@/sanity/MyPortableTextComponents";
 
-import { getWork, getAllWorkSlugs } from "@/sanity/queries/queries";
+import { getWork, getAllWorkSlugs } from "@/sanity/queries";
 
 import styles from "./page.module.css";
 
 // Static site generation
 export const generateStaticParams = async () => {
   const workSlugs = await getAllWorkSlugs();
-  const oneOffPostSlugs = oneOffPostArray.map((work) => work.slug);
-  return workSlugs.concat(oneOffPostSlugs);
+  return workSlugs;
 };
 
 const WorkPage = async ({ params }) => {
@@ -29,6 +27,14 @@ const WorkPage = async ({ params }) => {
         </dl>
       )}
       <PortableText value={content} components={MyPortableTextComponents} />
+      {/* For Contact page */}
+      {/* {
+        form && (
+          <form>
+
+          </form>
+        )
+      } */}
     </div>
   );
 };

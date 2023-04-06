@@ -1,12 +1,15 @@
-import { oneOffPostArray } from "@/data/oneOffPostArray";
 import Link from "next/link";
+
+import { getSingletons } from "@/sanity/queries";
 
 import styles from "./Footer.module.css";
 
-const Footer = () => {
+const Footer = async () => {
+  const singletons = await getSingletons();
+
   return (
     <ul className={styles.footerList}>
-      {oneOffPostArray.map(({ title, slug }) => (
+      {singletons.map(({ title, slug }) => (
         <li key={slug}>
           <Link href={slug}>{title}</Link>
         </li>

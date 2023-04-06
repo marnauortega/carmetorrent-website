@@ -1,13 +1,11 @@
 import Link from "next/link";
 
-import { getAllWorkTitlesAndSlugs } from "@/sanity/queries/queries";
+import { getAllWorkTitlesAndSlugs } from "@/sanity/queries";
 
 import styles from "./Nav.module.css";
 
 const Nav = async () => {
   const workTitles = await getAllWorkTitlesAndSlugs();
-
-  console.log(workTitles);
 
   return (
     <ul className={styles.navList}>

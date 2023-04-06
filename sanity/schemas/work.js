@@ -1,7 +1,10 @@
+import { BsFolder as icon } from "react-icons/bs";
+
 export default {
   name: "work",
-  title: "Obra",
+  title: "Obres",
   type: "document",
+  icon,
   fields: [
     {
       name: "title",

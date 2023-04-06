@@ -21,3 +21,32 @@ export function getAllWorkTitlesAndSlugs() {
   return createClient(clientConfig).fetch(groq`
     *[_type == "work"]{title, "slug": slug.current}`);
 }
+
+export function getBio() {
+  return createClient(clientConfig).fetch(groq`
+    *[_type == "bio"]{
+      title,
+      "slug": slug.current,
+      content,
+    }
+    `);
+}
+
+export function getContact() {
+  return createClient(clientConfig).fetch(groq`
+    *[_type == "contact"]{
+      title,
+      "slug": slug.current,
+      content,
+    }
+    `);
+}
+
+export function getSingletons() {
+  return createClient(clientConfig).fetch(groq`
+    *[_type == "bio" || _type == "contact"]{
+      title,
+      "slug": slug.current,
+    }
+    `);
+}

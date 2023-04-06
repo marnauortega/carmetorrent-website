@@ -3,7 +3,7 @@
 import Link from "next/link";
 import styles from "./Logo.module.css";
 import { usePathname, useRouter } from "next/navigation";
-import { ChevronLeft } from "react-feather";
+import { FiChevronLeft as ChevronLeft } from "react-icons/fi";
 
 const Logo = () => {
   const router = useRouter();
