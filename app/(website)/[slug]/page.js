@@ -1,5 +1,5 @@
 import { PortableText } from "@portabletext/react";
-import MyPortableTextComponents from "@/sanity/MyPortableTextComponents";
+import MyPortableTextComponents from "@/sanity/MyPortableTextComponents/MyPortableTextComponents";
 
 import { getWork, getAllWorkSlugs } from "@/sanity/queries";
 
@@ -15,9 +15,9 @@ const WorkPage = async ({ params }) => {
   const [{ title, chartToggled, chart, content }] = await getWork(params.slug);
   return (
     <div className={styles.content}>
-      <h1>{title}</h1>
+      <h1 className={styles.heading}>{title}</h1>
       {chartToggled && (
-        <dl>
+        <dl className={styles.chart}>
           <dt className={styles.chartTitle}>Lugar</dt>
           <dd className={styles.chartContent}>{chart.place}</dd>
           <dt className={styles.chartTitle}>Ciclo</dt>
@@ -26,7 +26,9 @@ const WorkPage = async ({ params }) => {
           <dd className={styles.chartContent}>{chart.year}</dd>
         </dl>
       )}
-      <PortableText value={content} components={MyPortableTextComponents} />
+      <div>
+        <PortableText value={content} components={MyPortableTextComponents} />
+      </div>
       {/* For Contact page */}
       {/* {
         form && (

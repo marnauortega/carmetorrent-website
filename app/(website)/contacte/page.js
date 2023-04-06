@@ -1,5 +1,5 @@
 import { PortableText } from "@portabletext/react";
-import MyPortableTextComponents from "@/sanity/MyPortableTextComponents";
+import MyPortableTextComponents from "@/sanity/MyPortableTextComponents/MyPortableTextComponents";
 
 import { getContact } from "@/sanity/queries";
 

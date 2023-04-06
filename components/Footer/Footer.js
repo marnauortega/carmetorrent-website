@@ -10,7 +10,7 @@ const Footer = async () => {
   return (
     <ul className={styles.footerList}>
       {singletons.map(({ title, slug }) => (
-        <li key={slug}>
+        <li key={slug} className={styles.li}>
           <Link href={slug}>{title}</Link>
         </li>
       ))}

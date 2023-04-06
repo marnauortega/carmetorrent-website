@@ -28,8 +28,7 @@ export function getBio() {
       title,
       "slug": slug.current,
       content,
-    }
-    `);
+    }`);
 }
 
 export function getContact() {
@@ -38,8 +37,7 @@ export function getContact() {
       title,
       "slug": slug.current,
       content,
-    }
-    `);
+    }`);
 }
 
 export function getSingletons() {
@@ -47,6 +45,28 @@ export function getSingletons() {
     *[_type == "bio" || _type == "contact"]{
       title,
       "slug": slug.current,
-    }
-    `);
+    }`);
+}
+
+export function getImageColor(imageId) {
+  return createClient(clientConfig).fetch(groq`
+  *[_type == "work"].content[]
+  [_type == "image"]
+  [asset._ref == "${imageId}"]
+  .asset->.metadata.palette.darkVibrant.background`);
+
+  // Many items
+  // *[_type == "work" && slug.current == "eclipse-2015"].content[]{
+  //     _type == "image" => {
+  //       asset->{
+  //         metadata{
+  //           palette {
+  //             darkMuted {
+  //               background
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }`
 }

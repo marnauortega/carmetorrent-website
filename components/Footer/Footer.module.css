@@ -1,0 +1,7 @@
+.footerList {
+  margin: 0;
+}
+
+.li:not(:last-of-type) {
+  padding-bottom: 20px;
+}

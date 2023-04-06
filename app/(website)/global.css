@@ -1,5 +1,7 @@
 body {
   color: black;
+  font-weight: 300;
+  overscroll-behavior-y: none;
 }
 
 ul {

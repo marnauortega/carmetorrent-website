@@ -10,7 +10,7 @@ const Nav = async () => {
   return (
     <ul className={styles.navList}>
       {workTitles.map(({ title, slug }) => (
-        <li key={slug}>
+        <li key={slug} className={styles.li}>
           <Link href={slug}>{title}</Link>
         </li>
       ))}

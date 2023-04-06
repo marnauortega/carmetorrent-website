@@ -46,9 +46,6 @@ export default {
           type: "string",
         },
       ],
-      // options: {
-      //   collapsible: true,
-      // },
     },
     {
       name: "content",
@@ -58,6 +55,9 @@ export default {
         { type: "block" },
         {
           type: "image",
+          options: {
+            metadata: ["blurhash", "lqip", "palette"],
+          },
         },
         // {
         //   type: "youtube",
