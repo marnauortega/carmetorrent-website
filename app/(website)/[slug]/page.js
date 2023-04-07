@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { PortableText } from "@portabletext/react";
 import MyPortableTextComponents from "@/sanity/MyPortableTextComponents/MyPortableTextComponents";
 
@@ -13,30 +14,27 @@ export const generateStaticParams = async () => {
 
 const WorkPage = async ({ params }) => {
   const [{ title, chartToggled, chart, content }] = await getWork(params.slug);
+
+  // Text is short if it has less than three paragraphs and none of them are longer than 500 characters
+  const textIsShort =
+    content.length <= 3 && content.filter((paragraph) => paragraph.children[0].text.length > 500).length === 0;
+
   return (
     <div className={styles.content}>
       <h1 className={styles.heading}>{title}</h1>
       {chartToggled && (
-        <dl className={styles.chart}>
-          <dt className={styles.chartTitle}>Lugar</dt>
-          <dd className={styles.chartContent}>{chart.place}</dd>
-          <dt className={styles.chartTitle}>Ciclo</dt>
-          <dd className={styles.chartContent}>{chart.cycle}</dd>
-          <dt className={styles.chartTitle}>Año</dt>
-          <dd className={styles.chartContent}>{chart.year}</dd>
+        <dl className={`${styles.chart} ${textIsShort ? styles.chartInsideLayout : ""}`}>
+          {chart.map(({ title, content }) => (
+            <Fragment key={title}>
+              <dt className={styles.chartTitle}>{title}</dt>
+              <dd className={styles.chartContent}>{content}</dd>
+            </Fragment>
+          ))}
         </dl>
       )}
-      <div>
+      <div className={styles.contentBody}>
         <PortableText value={content} components={MyPortableTextComponents} />
       </div>
-      {/* For Contact page */}
-      {/* {
-        form && (
-          <form>
-
-          </form>
-        )
-      } */}
     </div>
   );
 };

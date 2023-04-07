@@ -6,7 +6,7 @@ export function getWork(workSlug) {
     *[_type == "work" && slug.current == "${workSlug}" ]{
       title,
       chartToggled,
-      chart,
+      "chart": chart[]{title, content},
       content
     }
     `);

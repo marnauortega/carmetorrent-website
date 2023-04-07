@@ -23,12 +23,21 @@
   grid-column: 2 / 3;
 }
 
+.chart.chartInsideLayout {
+  grid-column: 1 / 2;
+}
+
 .chartTitle {
   text-transform: uppercase;
-  /* font-size: 14px; */
   padding-bottom: 0.75rem;
 }
 
 .chartContent {
   margin: 0 0 2.5rem 0;
+}
+
+.contentBody {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  padding-bottom: 2.5rem;
 }

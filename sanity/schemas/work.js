@@ -1,4 +1,5 @@
 import { BsFolder as icon } from "react-icons/bs";
+import { BsPerson as bioIcon } from "react-icons/bs";
 import portableText from "./portableText";
 
 export default {
@@ -28,23 +29,31 @@ export default {
     {
       name: "chart",
       title: "Graella",
-      type: "object",
+      type: "array",
       hidden: ({ document }) => !document?.chartToggled,
-      fields: [
+      of: [
         {
-          name: "place",
-          title: "Lloc",
-          type: "string",
-        },
-        {
-          name: "cycle",
-          title: "Cicle",
-          type: "string",
-        },
-        {
-          name: "year",
-          title: "Any",
-          type: "string",
+          name: "row",
+          title: "Línea",
+          type: "object",
+          fields: [
+            {
+              name: "title",
+              title: "Títol",
+              type: "string",
+            },
+            {
+              name: "content",
+              title: "Contingut",
+              type: "string",
+            },
+          ],
+          preview: {
+            select: {
+              title: "title",
+              subtitle: "content",
+            },
+          },
         },
       ],
     },

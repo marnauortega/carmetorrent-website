@@ -1,4 +1,3 @@
-import { BsFolder as workIcon } from "react-icons/bs";
 import { BsPerson as bioIcon } from "react-icons/bs";
 import { BsEnvelope as contactIcon } from "react-icons/bs";
 
