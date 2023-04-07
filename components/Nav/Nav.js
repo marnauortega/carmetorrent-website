@@ -8,7 +8,7 @@ const Nav = async () => {
   const workTitles = await getAllWorkTitlesAndSlugs();
 
   return (
-    <nav>
+    <nav className={styles.nav}>
       <ul className={styles.navList}>
         {workTitles.map(({ title, slug }) => (
           <li key={slug} className={styles.li}>

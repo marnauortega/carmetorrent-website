@@ -1,8 +1,16 @@
+.nav {
+  overflow: scroll;
+}
+
 .navList {
-  padding: 90px 0;
+  /* padding: 70px 0; */
   margin: 0;
 }
 
 .li {
   padding-bottom: 20px;
+}
+
+.li:last-of-type {
+  padding-bottom: 0;
 }

@@ -1,9 +1,10 @@
 .content {
   min-height: 100vh;
   padding: 70px;
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: 600px 1fr;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto auto 1fr;
   column-gap: 150px;
   grid-auto-flow: column;
   -webkit-font-smoothing: antialiased;
@@ -14,12 +15,17 @@
   padding-left: 1.5rem;
 }
 
+.content p {
+  margin: 0;
+}
+
 .heading {
   grid-column: 1 / 3;
-  margin: -0.75rem 0 2.5rem 0;
+  margin: -0.75rem 0 3.5rem 0;
 }
 
 .chart {
+  margin-top: 0;
   grid-column: 2 / 3;
 }
 
@@ -39,5 +45,5 @@
 .contentBody {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
-  padding-bottom: 2.5rem;
+  /* padding-bottom: 2.5rem; */
 }
