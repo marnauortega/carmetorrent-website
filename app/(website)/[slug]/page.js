@@ -15,10 +15,11 @@ export const generateStaticParams = async () => {
 const WorkPage = async ({ params }) => {
   const [{ title, chartToggled, chart, content }] = await getWork(params.slug);
   // Text is short if it has less than three paragraphs and none of them are longer than 500 characters
-  const textIsShort =
-    content?.length <= 3 &&
-    content?.filter((paragraph) => paragraph._type === "block" && paragraph?.children[0]?.text?.length > 500).length ===
-      0;
+  // const textIsShort =
+  //   content?.length <= 3 &&
+  //   content?.filter((paragraph) => paragraph._type === "block" && paragraph?.children[0]?.text?.length > 275).length ===
+  //     0;
+  const textIsShort = false;
 
   return (
     <div className={styles.content}>
