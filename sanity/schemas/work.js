@@ -46,11 +46,7 @@ export default {
               title: "Títol",
               type: "string",
             },
-            {
-              name: "content",
-              title: "Contingut",
-              type: "string",
-            },
+            portableText,
           ],
           preview: {
             select: {

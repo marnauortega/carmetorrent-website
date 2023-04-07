@@ -29,7 +29,9 @@ const WorkPage = async ({ params }) => {
           {chart?.map(({ title, content }) => (
             <Fragment key={title}>
               <dt className={styles.chartTitle}>{title}</dt>
-              <dd className={styles.chartContent}>{content}</dd>
+              <dd className={styles.chartContent}>
+                <PortableText value={content} components={MyPortableTextComponents} />
+              </dd>
             </Fragment>
           ))}
         </dl>
