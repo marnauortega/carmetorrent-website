@@ -1,3 +1,5 @@
+import portableText from "./portableText";
+
 export default {
   name: "bio",
   title: "Bio",
@@ -16,19 +18,6 @@ export default {
         source: "title",
       },
     },
-    {
-      name: "content",
-      title: "Contingut",
-      type: "array",
-      of: [
-        { type: "block" },
-        {
-          type: "image",
-        },
-        // {
-        //   type: "youtube",
-        // },
-      ],
-    },
+    portableText,
   ],
 };

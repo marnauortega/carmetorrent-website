@@ -44,6 +44,9 @@ export default {
         </div>
       );
     },
+    break: () => {
+      return <br />;
+    },
     // youtube: ({ value }) => {
     //   const { url } = value;
     //   const id = getYouTubeId(url);

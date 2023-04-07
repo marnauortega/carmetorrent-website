@@ -54,19 +54,4 @@ export function getImageColor(imageId) {
   [_type == "image"]
   [asset._ref == "${imageId}"]
   .asset->.metadata.palette.darkVibrant.background`);
-
-  // Many items
-  // *[_type == "work" && slug.current == "eclipse-2015"].content[]{
-  //     _type == "image" => {
-  //       asset->{
-  //         metadata{
-  //           palette {
-  //             darkMuted {
-  //               background
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }`
 }

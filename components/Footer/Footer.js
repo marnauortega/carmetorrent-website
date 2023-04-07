@@ -8,13 +8,15 @@ const Footer = async () => {
   const singletons = await getSingletons();
 
   return (
-    <ul className={styles.footerList}>
-      {singletons.map(({ title, slug }) => (
-        <li key={slug} className={styles.li}>
-          <Link href={slug}>{title}</Link>
-        </li>
-      ))}
-    </ul>
+    <nav>
+      <ul className={styles.footerList}>
+        {singletons.map(({ title, slug }) => (
+          <li key={slug} className={styles.li}>
+            <Link href={slug}>{title}</Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 };
 

@@ -8,13 +8,15 @@ const Nav = async () => {
   const workTitles = await getAllWorkTitlesAndSlugs();
 
   return (
-    <ul className={styles.navList}>
-      {workTitles.map(({ title, slug }) => (
-        <li key={slug} className={styles.li}>
-          <Link href={slug}>{title}</Link>
-        </li>
-      ))}
-    </ul>
+    <nav>
+      <ul className={styles.navList}>
+        {workTitles.map(({ title, slug }) => (
+          <li key={slug} className={styles.li}>
+            <Link href={slug}>{title}</Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 };
 

@@ -1,4 +1,5 @@
 import { BsFolder as icon } from "react-icons/bs";
+import portableText from "./portableText";
 
 export default {
   name: "work",
@@ -47,22 +48,6 @@ export default {
         },
       ],
     },
-    {
-      name: "content",
-      title: "Contingut",
-      type: "array",
-      of: [
-        { type: "block" },
-        {
-          type: "image",
-          options: {
-            metadata: ["blurhash", "lqip", "palette"],
-          },
-        },
-        // {
-        //   type: "youtube",
-        // },
-      ],
-    },
+    portableText,
   ],
 };

@@ -2,6 +2,7 @@ body {
   color: black;
   font-weight: 300;
   overscroll-behavior-y: none;
+  line-height: 1.5;
 }
 
 ul {
@@ -13,8 +14,19 @@ a {
   text-decoration: none;
 }
 
+nav a:link,
+nav a:focus,
+nav a:visited {
+  color: black;
+}
+
 a:link,
 a:focus,
 a:visited {
-  color: black;
+  color: white;
+}
+
+h1 {
+  font-weight: 350;
+  font-size: 50px;
 }
