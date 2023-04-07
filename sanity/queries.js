@@ -19,7 +19,7 @@ export function getAllWorkSlugs() {
 
 export function getAllWorkTitlesAndSlugs() {
   return createClient(clientConfig).fetch(groq`
-    *[_type == "work"]{title, "slug": slug.current}`);
+    *[_type == "work"]|order(orderRank){title, "slug": slug.current}`);
 }
 
 export function getBio() {

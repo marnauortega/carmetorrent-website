@@ -1,5 +1,6 @@
+import { orderRankField, orderRankOrdering } from "@sanity/orderable-document-list";
+
 import { BsFolder as icon } from "react-icons/bs";
-import { BsPerson as bioIcon } from "react-icons/bs";
 import portableText from "./portableText";
 
 export default {
@@ -8,6 +9,9 @@ export default {
   type: "document",
   icon,
   fields: [
+    orderRankField({
+      type: "category",
+    }),
     {
       name: "title",
       title: "Títol",
@@ -59,4 +63,5 @@ export default {
     },
     portableText,
   ],
+  orderings: [orderRankOrdering],
 };
