@@ -5,7 +5,6 @@ import styles from "./NavList.module.css";
 
 const NavList = async () => {
   const workTitles = await getAllWorkTitlesAndSlugs();
-  console.log(workTitles);
   return (
     <ul className={styles.navList}>
       {workTitles.map(({ title, slug }) => (

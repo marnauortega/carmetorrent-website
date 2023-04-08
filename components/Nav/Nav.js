@@ -14,7 +14,7 @@ const Nav = ({ children }) => {
   });
 
   return (
-    <nav className={styles.nav} ref={navRef}>
+    <nav className={styles.nav} ref={navRef} data-lenis-prevent>
       <ProgressBar scrollYProgress={scrollYProgress} />
       {children}
     </nav>

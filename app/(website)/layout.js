@@ -2,6 +2,7 @@ import Logo from "@/components/Logo/Logo";
 import Nav from "@/components/Nav/Nav";
 import NavList from "@/components/Nav/NavList";
 import Footer from "@/components/Footer/Footer";
+import { Providers } from "@/components/Providers/Providers";
 
 import { Inter } from "next/font/google";
 const inter = Inter({
@@ -20,17 +21,19 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`${styles.body} ${inter.className}`}>
-        <aside className={styles.aside}>
-          <Logo />
-          <Nav>
-            <NavList />
-          </Nav>
-          <Footer />
-        </aside>
-        <main className={styles.main}>{children}</main>
-      </body>
-    </html>
+    <Providers>
+      <html lang="en">
+        <body className={`${styles.body} ${inter.className}`}>
+          <aside className={styles.aside}>
+            <Logo />
+            <Nav>
+              <NavList />
+            </Nav>
+            <Footer />
+          </aside>
+          <main className={styles.main}>{children}</main>
+        </body>
+      </html>
+    </Providers>
   );
 }
