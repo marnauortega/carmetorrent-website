@@ -1,21 +1,22 @@
-import Link from "next/link";
+"use client";
 
-import { getAllWorkTitlesAndSlugs } from "@/sanity/queries";
+import { useRef } from "react";
+import { useScroll } from "framer-motion";
+
+import ProgressBar from "../ProgressBar/ProgressBar";
 
 import styles from "./Nav.module.css";
 
-const Nav = async () => {
-  const workTitles = await getAllWorkTitlesAndSlugs();
+const Nav = ({ children }) => {
+  const navRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    container: navRef,
+  });
 
   return (
-    <nav className={styles.nav}>
-      <ul className={styles.navList}>
-        {workTitles.map(({ title, slug }) => (
-          <li key={slug} className={styles.li}>
-            <Link href={slug}>{title}</Link>
-          </li>
-        ))}
-      </ul>
+    <nav className={styles.nav} ref={navRef}>
+      <ProgressBar scrollYProgress={scrollYProgress} />
+      {children}
     </nav>
   );
 };

@@ -1,16 +1,10 @@
 .nav {
   overflow: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
-.navList {
-  /* padding: 70px 0; */
-  margin: 0;
-}
-
-.li {
-  padding-bottom: 20px;
-}
-
-.li:last-of-type {
-  padding-bottom: 0;
+/* Chrome, Safari and Opera */
+.nav::-webkit-scrollbar {
+  display: none;
 }

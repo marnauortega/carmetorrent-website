@@ -1,5 +1,6 @@
 import Logo from "@/components/Logo/Logo";
 import Nav from "@/components/Nav/Nav";
+import NavList from "@/components/Nav/NavList";
 import Footer from "@/components/Footer/Footer";
 
 import { Inter } from "next/font/google";
@@ -23,7 +24,9 @@ export default function RootLayout({ children }) {
       <body className={`${styles.body} ${inter.className}`}>
         <aside className={styles.aside}>
           <Logo />
-          <Nav />
+          <Nav>
+            <NavList />
+          </Nav>
           <Footer />
         </aside>
         <main className={styles.main}>{children}</main>
