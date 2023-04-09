@@ -1,7 +1,37 @@
+.navWrapper {
+  position: relative;
+  flex: 1;
+  height: 500px;
+}
+
+.navWrapper:before,
+.navWrapper:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.navWrapper:before {
+  top: 0;
+  height: 90px;
+  background: linear-gradient(white 0 50px, transparent 90px);
+}
+
+.navWrapper:after {
+  bottom: 0;
+  height: 125px;
+  background: linear-gradient(to top, white 0 50px, transparent 125px);
+}
+
 .nav {
+  height: 100%;
   overflow: scroll;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+  position: relative;
 }
 
 /* Chrome, Safari and Opera */

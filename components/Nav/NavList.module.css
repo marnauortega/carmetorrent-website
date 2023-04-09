@@ -1,13 +1,15 @@
 .navList {
-    /* padding: 70px 0; */
-    margin: 0;
-  }
-  
-  .li {
-    padding-bottom: 20px;
-  }
-  
-  .li:last-of-type {
-    padding-bottom: 0;
-  }
-  
+  margin: 0;
+}
+
+.li {
+  padding-bottom: 20px;
+}
+
+.li:first-of-type {
+  padding-top: 70px;
+}
+
+.li:last-of-type {
+  padding-bottom: 100px;
+}
