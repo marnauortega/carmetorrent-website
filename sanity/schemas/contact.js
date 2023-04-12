@@ -4,6 +4,7 @@ export default {
   name: "contact",
   title: "Contacte",
   type: "document",
+  i18n: true,
   fields: [
     {
       name: "title",
@@ -20,4 +21,14 @@ export default {
     },
     portableText,
   ],
+  preview: {
+    select: {
+      title: "__i18n_lang",
+    },
+    prepare({ title }) {
+      return {
+        title: title.slice(0, 2).toUpperCase(),
+      };
+    },
+  },
 };

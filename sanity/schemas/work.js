@@ -7,6 +7,7 @@ export default {
   name: "work",
   title: "Obres",
   type: "document",
+  i18n: true,
   icon,
   fields: [
     orderRankField({
