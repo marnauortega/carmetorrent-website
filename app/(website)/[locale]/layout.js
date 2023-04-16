@@ -2,6 +2,7 @@ import Logo from "@/components/Logo/Logo";
 import Nav from "@/components/Nav/Nav";
 import NavList from "@/components/Nav/NavList";
 import Footer from "@/components/Footer/Footer";
+import LanguageToggler from "@/components/LanguageToggler/LanguageToggler";
 import { Providers } from "@/components/Providers/Providers";
 
 import { Inter } from "next/font/google";
@@ -19,17 +20,18 @@ export const metadata = {
   description: "Dansa contemporània",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children, params: { locale } }) {
   return (
     <Providers>
       <html lang="en">
         <body className={`${styles.body} ${inter.className}`}>
           <aside className={styles.aside}>
-            <Logo />
+            <Logo locale={locale} />
+            <LanguageToggler locale={locale} />
             <Nav>
-              <NavList />
+              <NavList locale={locale} />
             </Nav>
-            <Footer />
+            <Footer locale={locale} />
           </aside>
           <main className={styles.main}>{children}</main>
         </body>

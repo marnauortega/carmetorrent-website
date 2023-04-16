@@ -4,15 +4,15 @@ import { getSingletons } from "@/sanity/queries";
 
 import styles from "./Footer.module.css";
 
-const Footer = async () => {
-  const singletons = await getSingletons();
+const Footer = async ({ locale }) => {
+  const singletons = await getSingletons(locale);
 
   return (
     <nav>
       <ul className={styles.footerList}>
         {singletons.map(({ title, slug }) => (
           <li key={slug} className={styles.li}>
-            <Link href={slug}>{title}</Link>
+            <Link href={`/${locale}/${slug}`}>{title}</Link>
           </li>
         ))}
       </ul>

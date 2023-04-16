@@ -17,9 +17,9 @@ export function getAllWorkSlugs() {
     *[_type == "work"].slug.current`);
 }
 
-export function getAllWorkTitlesAndSlugs() {
+export function getAllWorkTitlesAndSlugs(locale) {
   return createClient(clientConfig).fetch(groq`
-    *[_type == "work"]|order(orderRank){title, "slug": slug.current}`);
+    *[_type == "work" && __i18n_lang match "${locale}*"]|order(orderRank){title, "slug": slug.current}`);
 }
 
 export function getBio() {
@@ -40,9 +40,9 @@ export function getContact() {
     }`);
 }
 
-export function getSingletons() {
+export function getSingletons(locale) {
   return createClient(clientConfig).fetch(groq`
-    *[_type == "bio" || _type == "contact"]{
+    *[(_type == "bio" || _type == "contact") && __i18n_lang match "${locale}*"] | order(title asc){
       title,
       "slug": slug.current,
     }`);
