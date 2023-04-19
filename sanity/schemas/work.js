@@ -7,7 +7,6 @@ export default {
   name: "work",
   title: "Obres",
   type: "document",
-  i18n: true,
   icon,
   fields: [
     orderRankField({
@@ -59,6 +58,13 @@ export default {
       ],
     },
     portableText,
+    {
+      // should match 'languageField' plugin configuration setting, if customized
+      name: "language",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    },
   ],
   orderings: [orderRankOrdering],
 };

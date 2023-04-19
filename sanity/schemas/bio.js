@@ -4,7 +4,6 @@ export default {
   name: "bio",
   title: "Bio",
   type: "document",
-  i18n: true,
   fields: [
     {
       name: "title",
@@ -20,14 +19,23 @@ export default {
       },
     },
     portableText,
+    {
+      // should match 'languageField' plugin configuration setting, if customized
+      name: "language",
+      type: "string",
+      readOnly: true,
+      hidden: true,
+    },
   ],
   preview: {
     select: {
-      title: "__i18n_lang",
+      title: "title",
+      subtitle: "language",
     },
-    prepare({ title }) {
+    prepare({ title, subtitle }) {
       return {
-        title: title.slice(0, 2).toUpperCase(),
+        title,
+        subtitle: subtitle.slice(0, 2).toUpperCase(),
       };
     },
   },

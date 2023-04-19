@@ -1,8 +1,5 @@
-import CatFlag from "./catFlag.svg";
-import Image from "next/image";
-
 export default {
-  languages: [
+  supportedLanguages: [
     {
       title: "Català",
       id: "ca_ES",
@@ -16,7 +13,5 @@ export default {
       id: "es_ES",
     },
   ],
-  customFlagComponents: {
-    ca_ES: () => <Image src={CatFlag} width="24" height="24" alt="" />,
-  },
+  schemaTypes: ["work", "bio", "contact"],
 };

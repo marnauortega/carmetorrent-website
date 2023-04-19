@@ -12,7 +12,7 @@ export const deskStructure = (S, context) =>
         type: "work",
         title: "Obres",
         icon: workIcon,
-        filter: `__i18n_lang == $lang`,
+        filter: `language == $lang`,
         params: {
           lang: "ca_ES",
         },
