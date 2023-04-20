@@ -7,7 +7,6 @@ const defaultLocale = locales[0];
 export function middleware(request) {
   const pathname = request.nextUrl.pathname;
   const locale = pathname.split("/")[1];
-  // console.log("pathname", pathname, "locale", locale, "final pathname", pathname.replace(`/${locale}`, ""));
 
   // Check if the default locale is in the pathname
   if (defaultLocale === locale) {
