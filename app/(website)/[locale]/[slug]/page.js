@@ -22,12 +22,6 @@ const WorkPage = async ({ params }) => {
   if (workIsNotEmpty) {
     [{ title, chartToggled, chart, content }] = work;
   }
-  // Text is short if it has less than three paragraphs and none of them are longer than 500 characters
-  // const textIsShort =
-  //   content?.length <= 3 &&
-  //   content?.filter((paragraph) => paragraph._type === "block" && paragraph?.children[0]?.text?.length > 275).length ===
-  //     0;
-  const textIsShort = false;
 
   return (
     <>
@@ -36,7 +30,7 @@ const WorkPage = async ({ params }) => {
         <div className={styles.content}>
           <h1 className={styles.heading}>{title}</h1>
           {chartToggled && (
-            <dl className={`${styles.chart} ${textIsShort ? styles.chartInsideLayout : ""}`}>
+            <dl className={styles.chart}>
               {chart?.map(({ title, content }) => (
                 <Fragment key={title}>
                   <dt className={styles.chartTitle}>{title}</dt>
