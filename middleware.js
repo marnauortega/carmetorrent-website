@@ -1,33 +1,42 @@
 import { NextResponse } from "next/server";
 import i18nConfig from "./sanity/i18nConfig";
 
-let locales = i18nConfig.languages.map((lang) => lang.id.slice(0, 2));
-
-// Get the preferred locale, similar to above or using a library
-function getLocale(request) {
-  return locales[0];
-}
+let locales = i18nConfig.supportedLanguages.map((lang) => lang.id.split("_")[0]);
+const defaultLocale = locales[0];
 
 export function middleware(request) {
-  // Check if there is any supported locale in the pathname
   const pathname = request.nextUrl.pathname;
-  const pathnameIsMissingLocale = locales.every(
-    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
-  );
+  const locale = pathname.split("/")[1];
+  // console.log("pathname", pathname, "locale", locale, "final pathname", pathname.replace(`/${locale}`, ""));
 
-  // Redirect if there is no locale
-  if (pathnameIsMissingLocale) {
-    const locale = getLocale(request);
+  // Check if the default locale is in the pathname
+  if (defaultLocale === locale) {
+    // we remove locale if pathname contains default locale, by redirecting
+    if (pathname.startsWith(`/${locale}/`)) {
+      // if pathname has subpath, remove "/locale", eg. from "/ca/something" to "/something"
+      return NextResponse.redirect(new URL(pathname.replace(`/${locale}`, ""), request.url));
+    } else {
+      // if it doesn't, remove "locale", eg. from "/ca to "/"
+      return NextResponse.redirect(new URL(pathname.replace(`${locale}`, ""), request.url));
+    }
+  }
 
-    // e.g. incoming request is /products
-    // The new URL is now /en-US/products
-    return NextResponse.redirect(new URL(`/${locale}/${pathname}`, request.url));
+  const pathnameIsMissingValidLocale = locales.every((locale) => {
+    return !pathname.startsWith(`/${locale}`);
+  });
+
+  if (pathnameIsMissingValidLocale) {
+    // we rewrite pathnames without valid locale: rendered `/`, but showing `/ca`
+    return NextResponse.rewrite(
+      // Pathname already includes "/"
+      new URL(`/${defaultLocale}${pathname}`, request.url)
+    );
   }
 }
 
 export const config = {
   matcher: [
     // Skip all internal paths (_next) and also sanity studio (admin)
-    "/((?!_next|admin).*)",
+    "/((?!api|admin|_next/static|_next/image|assets|favicon.ico|sw.js).*)",
   ],
 };

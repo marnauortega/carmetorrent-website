@@ -1,6 +1,6 @@
 import { orderRankField, orderRankOrdering } from "@sanity/orderable-document-list";
-
 import { BsFolder as icon } from "react-icons/bs";
+import { isUniqueOtherThanLanguage } from "../utils/isUniqueOtherThanLanguage";
 import portableText from "./portableText";
 
 export default {
@@ -23,6 +23,7 @@ export default {
       type: "slug",
       options: {
         source: "title",
+        isUnique: isUniqueOtherThanLanguage,
       },
     },
     {

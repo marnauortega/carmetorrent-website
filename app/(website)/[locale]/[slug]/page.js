@@ -1,3 +1,4 @@
+import LanguageToggler from "@/components/LanguageToggler/LanguageToggler";
 import { Fragment } from "react";
 import { PortableText } from "@portabletext/react";
 import MyPortableTextComponents from "@/sanity/MyPortableTextComponents/MyPortableTextComponents";
@@ -13,7 +14,14 @@ export const generateStaticParams = async () => {
 };
 
 const WorkPage = async ({ params }) => {
-  const [{ title, chartToggled, chart, content }] = await getWork(params.slug);
+  const work = await getWork(params.slug, params.locale);
+  const workIsNotEmpty = !!work?.length;
+
+  let title, chartToggled, chart, content;
+
+  if (workIsNotEmpty) {
+    [{ title, chartToggled, chart, content }] = work;
+  }
   // Text is short if it has less than three paragraphs and none of them are longer than 500 characters
   // const textIsShort =
   //   content?.length <= 3 &&
@@ -22,24 +30,29 @@ const WorkPage = async ({ params }) => {
   const textIsShort = false;
 
   return (
-    <div className={styles.content}>
-      <h1 className={styles.heading}>{title}</h1>
-      {chartToggled && (
-        <dl className={`${styles.chart} ${textIsShort ? styles.chartInsideLayout : ""}`}>
-          {chart?.map(({ title, content }) => (
-            <Fragment key={title}>
-              <dt className={styles.chartTitle}>{title}</dt>
-              <dd className={styles.chartContent}>
-                <PortableText value={content} components={MyPortableTextComponents} />
-              </dd>
-            </Fragment>
-          ))}
-        </dl>
+    <>
+      <LanguageToggler params={params} />
+      {workIsNotEmpty && (
+        <div className={styles.content}>
+          <h1 className={styles.heading}>{title}</h1>
+          {chartToggled && (
+            <dl className={`${styles.chart} ${textIsShort ? styles.chartInsideLayout : ""}`}>
+              {chart?.map(({ title, content }) => (
+                <Fragment key={title}>
+                  <dt className={styles.chartTitle}>{title}</dt>
+                  <dd className={styles.chartContent}>
+                    <PortableText value={content} components={MyPortableTextComponents} />
+                  </dd>
+                </Fragment>
+              ))}
+            </dl>
+          )}
+          <div className={styles.contentBody}>
+            <PortableText value={content} components={MyPortableTextComponents} />
+          </div>
+        </div>
       )}
-      <div className={styles.contentBody}>
-        <PortableText value={content} components={MyPortableTextComponents} />
-      </div>
-    </div>
+    </>
   );
 };
 

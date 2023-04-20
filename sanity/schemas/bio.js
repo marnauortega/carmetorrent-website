@@ -1,4 +1,5 @@
 import portableText from "./portableText";
+import { isUniqueOtherThanLanguage } from "../utils/isUniqueOtherThanLanguage";
 
 export default {
   name: "bio",
@@ -16,6 +17,7 @@ export default {
       type: "slug",
       options: {
         source: "title",
+        isUnique: isUniqueOtherThanLanguage,
       },
     },
     portableText,
@@ -35,7 +37,7 @@ export default {
     prepare({ title, subtitle }) {
       return {
         title,
-        subtitle: subtitle.slice(0, 2).toUpperCase(),
+        subtitle: subtitle.split("_")[0].toUpperCase(),
       };
     },
   },

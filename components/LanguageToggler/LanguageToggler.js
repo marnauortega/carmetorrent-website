@@ -5,20 +5,22 @@ import { usePathname } from "next/navigation";
 import i18nConfig from "@/sanity/i18nConfig";
 import styles from "./LanguageToggler.module.css";
 
-let locales = i18nConfig.languages.map((lang) => lang.id.slice(0, 2));
+let locales = i18nConfig.supportedLanguages.map((lang) => lang.id.slice(0, 2));
 
-const LanguageToggler = ({ locale }) => {
-  const pathname = usePathname();
-  const URLContainsSubPath = pathname.startsWith(`/${locale}/`);
-  let pathnameWithoutLocale = "";
-  if (URLContainsSubPath) pathnameWithoutLocale = pathname.slice(4);
+const LanguageToggler = ({ params: { locale, slug } }) => {
+  // const pathname = usePathname();
+  // console.log(locale, slug);
+  // const URLContainsSubPath = pathname.startsWith(`/${locale}/`) || !!locale;
+  // console.log(pathname.split("/"), locale, URLContainsSubPath);
+  // let pathnameSubPath = "";
+  // if (URLContainsSubPath) pathnameSubPath = pathname.split("/")[2];
 
   return (
     <div className={styles.wrapper}>
       {locales
         .filter((l) => locale !== l)
         .map((l) => (
-          <Link key={l} href={`/${l}/${pathnameWithoutLocale}`}>
+          <Link key={l} href={`/${l}/${slug}`}>
             {l}
           </Link>
         ))}

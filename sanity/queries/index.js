@@ -1,9 +1,9 @@
 import { createClient, groq } from "next-sanity";
 import clientConfig from "@/sanity/clientConfig";
 
-export function getWork(workSlug) {
+export function getWork(workSlug, locale) {
   return createClient(clientConfig).fetch(groq`
-    *[_type == "work" && slug.current == "${workSlug}" ]{
+    *[_type == "work" && slug.current == "${workSlug}" && language match "${locale}*" ]{
       title,
       chartToggled,
       "chart": chart[]{title, content},
@@ -19,21 +19,21 @@ export function getAllWorkSlugs() {
 
 export function getAllWorkTitlesAndSlugs(locale) {
   return createClient(clientConfig).fetch(groq`
-    *[_type == "work" && __i18n_lang match "${locale}*"]|order(orderRank){title, "slug": slug.current}`);
+    *[_type == "work" && language match "${locale}*"]|order(orderRank){title, "slug": slug.current}`);
 }
 
-export function getBio() {
+export function getBio(locale) {
   return createClient(clientConfig).fetch(groq`
-    *[_type == "bio"]{
+    *[_type == "bio" && language match "${locale}*"]{
       title,
       "slug": slug.current,
       content,
     }`);
 }
 
-export function getContact() {
+export function getContact(locale) {
   return createClient(clientConfig).fetch(groq`
-    *[_type == "contact"]{
+    *[_type == "contact" && language match "${locale}*"]{
       title,
       "slug": slug.current,
       content,
@@ -42,7 +42,7 @@ export function getContact() {
 
 export function getSingletons(locale) {
   return createClient(clientConfig).fetch(groq`
-    *[(_type == "bio" || _type == "contact") && __i18n_lang match "${locale}*"] | order(title asc){
+    *[(_type == "bio" || _type == "contact") && language match "${locale}*"] | order(title asc){
       title,
       "slug": slug.current,
     }`);
