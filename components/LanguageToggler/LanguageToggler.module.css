@@ -1,5 +1,22 @@
 .wrapper {
   position: fixed;
-  top: 1rem;
-  right: 1rem;
+  top: var(--main-padding);
+  right: var(--main-padding);
+  cursor: pointer;
+}
+
+.currentLocale {
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.wrapper:hover .otherLocales {
+  visibility: visible;
+}
+
+.otherLocales {
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }

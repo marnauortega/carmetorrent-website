@@ -1,7 +1,11 @@
 .footerList {
+  position: fixed;
+  bottom: var(--main-padding);
+  right: var(--main-padding);
+  text-align: right;
   margin: 0;
 }
 
 .li:not(:last-of-type) {
-  padding-bottom: 20px;
+  padding-bottom: 16px;
 }

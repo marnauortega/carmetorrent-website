@@ -29,9 +29,9 @@ export default function RootLayout({ children, params: { locale } }) {
             <Nav>
               <NavList locale={locale} />
             </Nav>
-            <Footer locale={locale} />
           </aside>
           <main className={styles.main}>{children}</main>
+          <Footer locale={locale} />
         </body>
       </html>
     </Providers>

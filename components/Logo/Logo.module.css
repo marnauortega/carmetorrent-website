@@ -1,8 +1,8 @@
 .logo {
-  height: 49px;
-  width: 49px;
+  height: 36px;
+  width: 36px;
   border-radius: 100%;
-  background-color: #2e00b4;
+  background-color: var(--main-color);
   display: flex;
   align-items: center;
   justify-self: center;
@@ -11,5 +11,5 @@
 .icon {
   /* margin: auto; */
   width: 100%;
-  padding-right: 5px;
+  padding-right: 2px;
 }

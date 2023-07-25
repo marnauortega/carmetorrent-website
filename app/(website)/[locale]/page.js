@@ -5,9 +5,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ params }) {
   return (
-    <main>
+    <>
       <LanguageToggler params={params} />
-      <div></div>
-    </main>
+    </>
   );
 }

@@ -16,7 +16,7 @@ const Nav = ({ children }) => {
   return (
     <div className={styles.navWrapper}>
       <nav className={styles.nav} ref={navRef} data-lenis-prevent>
-        <ProgressBar scrollYProgress={scrollYProgress} />
+        {/* <ProgressBar scrollYProgress={scrollYProgress} /> */}
         {children}
       </nav>
     </div>

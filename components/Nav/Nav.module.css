@@ -4,7 +4,7 @@
   height: 500px;
 }
 
-.navWrapper:before,
+/* .navWrapper:before,
 .navWrapper:after {
   content: "";
   position: absolute;
@@ -24,7 +24,7 @@
   bottom: 0;
   height: 125px;
   background: linear-gradient(to top, white 0 50px, transparent 125px);
-}
+} */
 
 .nav {
   height: 100%;

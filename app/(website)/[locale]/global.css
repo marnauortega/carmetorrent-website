@@ -1,8 +1,15 @@
+:root {
+  --main-color: #151982;
+  --main-padding: 60px;
+}
+
 body {
   color: black;
   font-weight: 300;
   overscroll-behavior-y: none;
-  line-height: 1.5;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: var(--main-color);
 }
 
 ul {
@@ -17,16 +24,10 @@ a {
 nav a:link,
 nav a:focus,
 nav a:visited {
-  color: black;
-}
-
-a:link,
-a:focus,
-a:visited {
-  color: white;
+  color: var(--main-color);
 }
 
 h1 {
-  font-weight: 350;
-  font-size: 50px;
+  font-weight: 500;
+  font-size: 25px;
 }

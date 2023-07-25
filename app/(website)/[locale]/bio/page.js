@@ -18,7 +18,7 @@ const BioPage = async ({ params }) => {
     <>
       <LanguageToggler params={params} />
       <div className={styles.content}>
-        <h1>{title}</h1>
+        <h1 className={styles.heading}>{title}</h1>
         <PortableText value={content} components={MyPortableTextComponents} />
       </div>
     </>
