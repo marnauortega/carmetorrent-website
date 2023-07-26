@@ -21,7 +21,8 @@ export function middleware(request) {
   }
 
   const pathnameIsMissingValidLocale = locales.every((locale) => {
-    return !pathname.startsWith(`/${locale}`);
+    // If pathname isn't "/ca" and doesn't contain "/ca/", then it isn't valid
+    return pathname !== `/${locale}` && !pathname.startsWith(`/${locale}/`);
   });
 
   if (pathnameIsMissingValidLocale) {
