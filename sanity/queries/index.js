@@ -14,7 +14,11 @@ export function getWork(workSlug, locale) {
 
 export function getAllWorkSlugs() {
   return createClient(clientConfig).fetch(groq`
-    *[_type == "work"].slug.current`);
+    *[_type == "work"]{
+      "locale": language,
+      "slug": slug.current,
+    }
+    `);
 }
 
 export function getAllWorkTitlesAndSlugs(locale) {

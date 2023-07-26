@@ -6,11 +6,8 @@ import { getContact } from "@/sanity/queries";
 
 import styles from "../[slug]/page.module.css";
 
-// Static site generation
-// export const generateStaticParams = async () => {
-//   const [{ slug }] = await getContact();
-//   return slug;
-// };
+export const dynamic = "force-static";
+export const revalidate = 60;
 
 const ContactPage = async ({ params }) => {
   const [{ title, content }] = await getContact(params.locale);

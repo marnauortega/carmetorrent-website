@@ -6,11 +6,8 @@ import { getBio } from "@/sanity/queries";
 
 import styles from "../[slug]/page.module.css";
 
-// Static site generation
-// export const generateStaticParams = async () => {
-//   const [{ slug }] = await getBio();
-//   return slug;
-// };
+export const dynamic = "force-static";
+export const revalidate = 60;
 
 const BioPage = async ({ params }) => {
   const [{ title, content }] = await getBio(params.locale);
