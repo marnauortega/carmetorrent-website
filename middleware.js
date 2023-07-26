@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import i18nConfig from "./sanity/i18nConfig";
 
-let locales = i18nConfig.supportedLanguages.map((lang) => lang.id.split("_")[0]);
+let locales = i18nConfig.supportedLanguages.map((lang) => lang.id);
 const defaultLocale = locales[0];
 
 export function middleware(request) {

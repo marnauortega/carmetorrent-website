@@ -14,7 +14,7 @@ export const deskStructure = (S, context) =>
         icon: workIcon,
         filter: `language == $lang`,
         params: {
-          lang: "ca_ES",
+          lang: "ca",
         },
         S,
         context,
