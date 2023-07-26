@@ -22,7 +22,6 @@ export default {
     },
     portableText,
     {
-      // should match 'languageField' plugin configuration setting, if customized
       name: "language",
       type: "string",
       readOnly: true,

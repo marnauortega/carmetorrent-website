@@ -10,11 +10,5 @@ export default {
         metadata: ["blurhash", "lqip", "palette"],
       },
     },
-    {
-      type: "break",
-    },
-    // {
-    //   type: "youtube",
-    // },
   ],
 };
