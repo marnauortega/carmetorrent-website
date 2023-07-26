@@ -5,9 +5,9 @@ export function getWork(workSlug, locale) {
   return createClient(clientConfig).fetch(groq`
     *[_type == "work" && slug.current == "${workSlug}" && language match "${locale}*" ]{
       title,
-      chartToggled,
-      "chart": chart[]{title, content},
-      content
+      cycles,
+      content,
+      "chart": chart[]{title, content}
     }
     `);
 }

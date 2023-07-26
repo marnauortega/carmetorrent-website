@@ -27,15 +27,36 @@ export default {
       },
     },
     {
-      name: "chartToggled",
-      title: "Activar Graella",
-      type: "boolean",
+      name: "cycles",
+      title: "Cicles",
+      type: "array",
+      of: [
+        {
+          name: "row",
+          title: "Línea",
+          type: "object",
+          fields: [
+            {
+              name: "year",
+              title: "Any",
+              type: "string",
+            },
+            portableText,
+          ],
+          preview: {
+            select: {
+              title: "year",
+              subtitle: "content",
+            },
+          },
+        },
+      ],
     },
+    portableText,
     {
       name: "chart",
-      title: "Graella",
+      title: "Fitxa artística",
       type: "array",
-      hidden: ({ document }) => !document?.chartToggled,
       of: [
         {
           name: "row",
@@ -58,9 +79,7 @@ export default {
         },
       ],
     },
-    portableText,
     {
-      // should match 'languageField' plugin configuration setting, if customized
       name: "language",
       type: "string",
       readOnly: true,

@@ -17,10 +17,10 @@ const WorkPage = async ({ params }) => {
   const work = await getWork(params.slug, params.locale);
   const workIsNotEmpty = !!work?.length;
 
-  let title, chartToggled, chart, content;
+  let title, cycles, content, chart;
 
   if (workIsNotEmpty) {
-    [{ title, chartToggled, chart, content }] = work;
+    [{ title, cycles, content, chart }] = work;
   }
 
   return (
@@ -29,12 +29,12 @@ const WorkPage = async ({ params }) => {
       {workIsNotEmpty && (
         <div className={styles.content}>
           <h1 className={styles.heading}>{title}</h1>
-          {chartToggled && (
-            <dl className={styles.chart}>
-              {chart?.map(({ title, content }) => (
-                <Fragment key={title}>
-                  <dt className={styles.chartTitle}>{title}</dt>
-                  <dd className={styles.chartContent}>
+          {cycles?.length > 0 && (
+            <dl className={styles.desktopCycles}>
+              {cycles?.map(({ year, content }) => (
+                <Fragment key={year}>
+                  <dt className={styles.cyclesYear}>{year}</dt>
+                  <dd className={styles.cyclesContent}>
                     <PortableText value={content} components={MyPortableTextComponents} />
                   </dd>
                 </Fragment>
@@ -43,6 +43,29 @@ const WorkPage = async ({ params }) => {
           )}
           <div className={styles.contentBody}>
             <PortableText value={content} components={MyPortableTextComponents} />
+            {chart?.length > 0 && (
+              <>
+                <p className={styles.chartHeading}>Fitxa Artística</p>
+                {chart?.map(({ title, content }) => (
+                  <div key={title} className={styles.chartContent}>
+                    <span className={styles.chartTitle}>{title}: </span>
+                    <PortableText value={content} components={MyPortableTextComponents} />
+                  </div>
+                ))}
+              </>
+            )}
+            {cycles?.length > 0 && (
+              <dl className={styles.mobileCycles}>
+                {cycles?.map(({ year, content }) => (
+                  <Fragment key={year}>
+                    <dt className={styles.cyclesYear}>{year}</dt>
+                    <dd className={styles.cyclesContent}>
+                      <PortableText value={content} components={MyPortableTextComponents} />
+                    </dd>
+                  </Fragment>
+                ))}
+              </dl>
+            )}
           </div>
         </div>
       )}
