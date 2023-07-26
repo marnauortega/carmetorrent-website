@@ -3,18 +3,6 @@
   margin: 0;
 }
 
-.aside {
-  height: 100vh;
-  position: sticky;
-  top: 0;
-  width: 428px;
-  padding: var(--main-padding);
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 .main {
   flex: 1;
 }

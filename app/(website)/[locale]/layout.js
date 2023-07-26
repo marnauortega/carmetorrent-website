@@ -1,6 +1,5 @@
 import Logo from "@/components/Logo/Logo";
 import Nav from "@/components/Nav/Nav";
-import NavList from "@/components/Nav/NavList";
 import Footer from "@/components/Footer/Footer";
 import { Providers } from "@/components/Providers/Providers";
 
@@ -24,12 +23,8 @@ export default function RootLayout({ children, params: { locale } }) {
     <Providers>
       <html lang="en">
         <body className={`${styles.body} ${inter.className}`}>
-          <aside className={styles.aside}>
-            <Logo locale={locale} />
-            <Nav>
-              <NavList locale={locale} />
-            </Nav>
-          </aside>
+          <Logo className={styles.logo} locale={locale} />
+          <Nav locale={locale} />
           <main className={styles.main}>{children}</main>
           <Footer locale={locale} />
         </body>
