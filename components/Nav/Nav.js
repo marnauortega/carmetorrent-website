@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { getAllWorkTitlesAndSlugs } from "@/sanity/queries";
+import NavLink from "./NavLink";
 
 import styles from "./Nav.module.css";
 
@@ -11,7 +11,9 @@ const Nav = async ({ locale, className }) => {
         <ul className={styles.navList}>
           {workTitles.map(({ title, slug }) => (
             <li key={slug} className={styles.li}>
-              <Link href={`/${locale}/${slug}`}>{title}</Link>
+              <NavLink locale={locale} slug={slug}>
+                {title}
+              </NavLink>
             </li>
           ))}
         </ul>

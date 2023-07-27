@@ -92,9 +92,10 @@ const WorkPage = async ({ params }) => {
             )}
             <Link href={`/${locale}/${nextWork.slug}`} className={styles.nextWork}>
               <p className="h2">{locale === "ca" ? "Següent obra" : locale === "es" ? "Sigüente obra" : "Next work"}</p>
-              <p className={styles.nextTitle}>
-                {nextWork.title} <FiChevronRight className={styles.icon} />
-              </p>
+              <div className={styles.nextTitle}>
+                <span>{nextWork.title}</span>
+                <FiChevronRight className={styles.icon} />
+              </div>
             </Link>
           </div>
         </div>

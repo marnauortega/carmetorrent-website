@@ -1,0 +1,22 @@
+.link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: stretch;
+}
+
+.icon {
+  padding-top: 2px;
+  visibility: hidden;
+  opacity: 0;
+  padding-left: 0;
+  transition: visibility 0.3s cubic-bezier(0.86, 0, 0.4, 1), opacity 0.3s cubic-bezier(0.86, 0, 0.4, 1),
+    padding-left 0.3s cubic-bezier(0.86, 0, 0.4, 1);
+}
+
+.link:hover .icon,
+.active .icon {
+  padding-left: 6px;
+  opacity: 1;
+  visibility: visible;
+}
