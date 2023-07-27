@@ -6,10 +6,24 @@
   display: flex;
   align-items: center;
   justify-self: center;
+  position: fixed;
+  top: var(--main-padding);
+  left: var(--main-padding);
+  z-index: 20;
 }
 
 .icon {
-  /* margin: auto; */
   width: 100%;
   padding-right: 2px;
+  stroke: var(--background-color);
+}
+
+/* ===========================================
+              RESPONSIVE: MOBILE
+=========================================== */
+
+@media (max-width: 1200px) {
+  .logo {
+    top: 35px;
+  }
 }

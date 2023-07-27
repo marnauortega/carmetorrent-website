@@ -2,8 +2,11 @@ import LanguageToggler from "@/components/LanguageToggler/LanguageToggler";
 import { Fragment } from "react";
 import { PortableText } from "@portabletext/react";
 import MyPortableTextComponents from "@/sanity/MyPortableTextComponents/MyPortableTextComponents";
+import MobileMenu from "@/components/MobileMenu/MobileMenu";
+import Link from "next/link";
+import { FiChevronRight } from "react-icons/fi";
 
-import { getWork, getAllWorkSlugs } from "@/sanity/queries";
+import { getWork, getAllWorkSlugs, getAllWorkTitlesAndSlugs } from "@/sanity/queries";
 
 import styles from "./page.module.css";
 
@@ -14,18 +17,35 @@ export const generateStaticParams = async () => {
 };
 
 const WorkPage = async ({ params }) => {
-  const work = await getWork(params.slug, params.locale);
+  const locale = params.locale;
+  const work = await getWork(params.slug, locale);
   const workIsNotEmpty = !!work?.length;
 
-  let title, cycles, content, chart;
+  let title, slug, cycles, content, chart, translations;
 
   if (workIsNotEmpty) {
-    [{ title, cycles, content, chart }] = work;
+    [{ title, slug, cycles, content, chart, translations }] = work;
+  }
+
+  const works = await getAllWorkTitlesAndSlugs(locale);
+  const worksIsNotEmpty = !!works?.length;
+
+  let nextWork;
+  let nextWorkIsNotEmpty;
+
+  if (worksIsNotEmpty) {
+    for (let i = 0; i < works.length; i++) {
+      if (works[i].slug === slug) {
+        nextWork = works.length !== i + 1 ? works[i + 1] : works[0];
+      }
+    }
+    nextWorkIsNotEmpty = !!Object.keys(nextWork)?.length;
   }
 
   return (
     <>
-      <LanguageToggler params={params} />
+      <LanguageToggler params={params} translations={translations} />
+      <MobileMenu params={params} />
       {workIsNotEmpty && (
         <div className={styles.content}>
           <h1 className={styles.heading}>{title}</h1>
@@ -33,7 +53,7 @@ const WorkPage = async ({ params }) => {
             <dl className={styles.desktopCycles}>
               {cycles?.map(({ year, content }) => (
                 <Fragment key={year}>
-                  <dt className={styles.cyclesYear}>{year}</dt>
+                  <dt className={`h2 ${styles.cyclesYear}`}>{year}</dt>
                   <dd className={styles.cyclesContent}>
                     <PortableText value={content} components={MyPortableTextComponents} />
                   </dd>
@@ -42,10 +62,14 @@ const WorkPage = async ({ params }) => {
             </dl>
           )}
           <div className={styles.contentBody}>
-            <PortableText value={content} components={MyPortableTextComponents} />
+            <div className={styles.portableTextWrapper}>
+              <PortableText value={content} components={MyPortableTextComponents} />
+            </div>
             {chart?.length > 0 && (
               <>
-                <p className={styles.chartHeading}>Fitxa Artística</p>
+                <p className={`h2 ${styles.chartHeading}`}>
+                  {locale === "ca" ? "Fitxa Artística" : locale === "es" ? "Ficha Artística" : "Cast"}
+                </p>
                 {chart?.map(({ title, content }) => (
                   <div key={title} className={styles.chartContent}>
                     <span className={styles.chartTitle}>{title}: </span>
@@ -58,7 +82,7 @@ const WorkPage = async ({ params }) => {
               <dl className={styles.mobileCycles}>
                 {cycles?.map(({ year, content }) => (
                   <Fragment key={year}>
-                    <dt className={styles.cyclesYear}>{year}</dt>
+                    <dt className={`h2 ${styles.cyclesYear}`}>{year}</dt>
                     <dd className={styles.cyclesContent}>
                       <PortableText value={content} components={MyPortableTextComponents} />
                     </dd>
@@ -66,6 +90,12 @@ const WorkPage = async ({ params }) => {
                 ))}
               </dl>
             )}
+            <Link href={`/${locale}/${nextWork.slug}`} className={styles.nextWork}>
+              <p className="h2">{locale === "ca" ? "Següent obra" : locale === "es" ? "Sigüente obra" : "Next work"}</p>
+              <p className={styles.nextTitle}>
+                {nextWork.title} <FiChevronRight className={styles.icon} />
+              </p>
+            </Link>
           </div>
         </div>
       )}

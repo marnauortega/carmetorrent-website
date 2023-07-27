@@ -1,14 +1,12 @@
 .aside {
   height: 100vh;
+  /* position: fixed; */
   position: sticky;
-  top: var(--padding-top);
-  width: 428px;
-  padding: 0 var(--main-padding) var(--main-padding);
+  top: 0;
+  /* top: var(--padding-top); */
+  width: fit-content;
+  padding: var(--padding-top) var(--main-padding) var(--main-padding);
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 40px;
 }
 
 .nav {

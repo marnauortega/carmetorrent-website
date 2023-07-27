@@ -2,12 +2,12 @@
   position: fixed;
   top: var(--main-padding);
   right: var(--main-padding);
-  cursor: pointer;
 }
 
 .currentLocale {
   margin-bottom: 16px;
   display: inline-block;
+  cursor: pointer;
 }
 
 .wrapper:hover .otherLocales {
@@ -19,4 +19,18 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.otherLocales a {
+  cursor: pointer;
+}
+
+/* ===========================================
+              RESPONSIVE: MOBILE
+=========================================== */
+
+@media (max-width: 1200px) {
+  .wrapper {
+    display: none;
+  }
 }

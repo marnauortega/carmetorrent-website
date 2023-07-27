@@ -1,6 +1,9 @@
 :root {
   --main-color: #151982;
-  --main-padding: 60px;
+  --background-color: rgb(250, 246, 241);
+  --main-padding: clamp(30px, 6vw, 60px);
+  --vertical-gap: 40px;
+  --padding-top: 132px;
 }
 
 body {
@@ -21,13 +24,22 @@ a {
   text-decoration: none;
 }
 
-nav a:link,
-nav a:focus,
-nav a:visited {
+a:link,
+a:focus,
+a:visited {
   color: var(--main-color);
 }
 
-h1 {
+h1,
+.h1 {
   font-weight: 500;
   font-size: 25px;
+  margin: 0 0 var(--vertical-gap);
+}
+
+h2,
+.h2 {
+  font-weight: 650;
+  text-transform: uppercase;
+  margin: 0 0 12px;
 }

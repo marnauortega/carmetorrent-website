@@ -3,10 +3,6 @@ import imageUrlBuilder from "@sanity/image-url";
 import Image from "next/image";
 import { getImageDimensions } from "@sanity/asset-utils";
 import { getImageColor } from "../queries";
-// import getYouTubeId from "get-youtube-id";
-// import LiteYouTubeEmbed from "./ToUseClient/ToUseClient";
-// import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
-// import ToUseClient from "./ToUseClient/ToUseClient";
 
 import styles from "./MyPortableTextComponents.module.css";
 
@@ -44,13 +40,5 @@ export default {
         </div>
       );
     },
-    break: () => {
-      return <br />;
-    },
-    // youtube: ({ value }) => {
-    //   const { url } = value;
-    //   const id = getYouTubeId(url);
-    //   return <LiteYouTubeEmbed id={id} />;
-    // },
   },
 };

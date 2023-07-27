@@ -1,0 +1,39 @@
+.menuHamb,
+.menuWrapper {
+  display: none;
+}
+
+/* ===========================================
+              RESPONSIVE: MOBILE
+=========================================== */
+
+@media (max-width: 1200px) {
+  .backgroundWrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 105px;
+    z-index: 10;
+    background-color: var(--background-color);
+  }
+
+  .menuHamb {
+    display: block;
+    position: fixed;
+    top: 42px;
+    right: var(--main-padding);
+  }
+
+  .menuWrapper {
+    display: block;
+    position: fixed;
+    inset: 0;
+    padding: var(--padding-top) var(--main-padding) var(--main-padding);
+    background-color: var(--background-color);
+  }
+
+  .menuWrapper > ul {
+    margin: 0;
+  }
+}

@@ -11,9 +11,7 @@ const Logo = ({ locale }) => {
 
   return (
     <Link href={`/${locale}`}>
-      <div className={styles.logo}>
-        {pathName.length <= 4 ? "" : <ChevronLeft color="white" className={styles.icon} />}
-      </div>
+      <div className={styles.logo}>{pathName.length <= 4 ? "" : <ChevronLeft className={styles.icon} />}</div>
     </Link>
   );
 };

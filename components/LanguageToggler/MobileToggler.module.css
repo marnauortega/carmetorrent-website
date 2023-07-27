@@ -1,0 +1,13 @@
+.wrapper {
+  position: fixed;
+  bottom: var(--main-padding);
+  left: var(--main-padding);
+  right: var(--main-padding);
+  display: flex;
+  gap: 50px;
+}
+
+.currentLocale {
+  margin-bottom: 16px;
+  display: inline-block;
+}

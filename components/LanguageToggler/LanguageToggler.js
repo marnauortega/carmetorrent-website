@@ -1,23 +1,16 @@
-import Link from "next/link";
-import i18nConfig from "@/sanity/i18nConfig";
-import styles from "./LanguageToggler.module.css";
+"use client";
 
-let locales = i18nConfig.supportedLanguages.map((lang) => lang.id);
+import { usePathname } from "next/navigation";
+import MobileToggler from "./MobileToggler";
+import DesktopToggler from "./DesktopToggler";
 
-const LanguageToggler = ({ params: { locale, slug } }) => {
-  return (
-    <div className={styles.wrapper}>
-      <span className={styles.currentLocale}>{locale}</span>
-      <div className={styles.otherLocales}>
-        {locales
-          .filter((l) => locale !== l)
-          .map((l) => (
-            <Link key={l} href={`/${l}/${slug}`}>
-              {l}
-            </Link>
-          ))}
-      </div>
-    </div>
+const LanguageToggler = ({ params, mobile = false, translations }) => {
+  const pathname = usePathname();
+
+  return mobile ? (
+    <MobileToggler params={params} pathname={pathname} translations={translations} />
+  ) : (
+    <DesktopToggler params={params} pathname={pathname} translations={translations} />
   );
 };
 

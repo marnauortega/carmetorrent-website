@@ -36,7 +36,7 @@ export default {
     prepare({ title, subtitle }) {
       return {
         title,
-        subtitle: subtitle.split("_")[0].toUpperCase(),
+        subtitle: subtitle.toUpperCase(),
       };
     },
   },

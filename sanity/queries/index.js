@@ -5,9 +5,14 @@ export function getWork(workSlug, locale) {
   return createClient(clientConfig).fetch(groq`
     *[_type == "work" && slug.current == "${workSlug}" && language match "${locale}*" ]{
       title,
+      "slug": slug.current,
       cycles,
       content,
-      "chart": chart[]{title, content}
+      "chart": chart[]{title, content},
+      "translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
+        "slug": slug.current,
+        language
+      },
     }
     `);
 }
@@ -23,21 +28,16 @@ export function getAllWorkSlugs() {
 
 export function getAllWorkTitlesAndSlugs(locale) {
   return createClient(clientConfig).fetch(groq`
-    *[_type == "work" && language match "${locale}*"]|order(orderRank){title, "slug": slug.current}`);
-}
-
-export function getBio(locale) {
-  return createClient(clientConfig).fetch(groq`
-    *[_type == "bio" && language match "${locale}*"]{
+    *[_type == "work" && language match "${locale}*"]|order(orderRank) {
       title,
-      "slug": slug.current,
-      content,
-    }`);
+      "slug": slug.current 
+    }
+    `);
 }
 
-export function getContact(locale) {
+export function getPage(page, locale) {
   return createClient(clientConfig).fetch(groq`
-    *[_type == "contact" && language match "${locale}*"]{
+    *[_type == "${page}" && language match "${locale}*"]{
       title,
       "slug": slug.current,
       content,

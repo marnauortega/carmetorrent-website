@@ -24,7 +24,7 @@ export default function RootLayout({ children, params: { locale } }) {
       <html lang="en">
         <body className={`${styles.body} ${inter.className}`}>
           <Logo className={styles.logo} locale={locale} />
-          <Nav locale={locale} />
+          <Nav locale={locale} className={styles.desktopNav} />
           <main className={styles.main}>{children}</main>
           <Footer locale={locale} />
         </body>
