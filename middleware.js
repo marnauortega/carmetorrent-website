@@ -8,8 +8,11 @@ export function middleware(request) {
   const pathname = request.nextUrl.pathname;
   const locale = pathname.split("/")[1];
 
+  const alreadyRewritten = request.headers.get("x-middleware-rewrite");
+  console.log(alreadyRewritten, request.headers.get("x-middleware-rewrite"));
+
   // Check if the default locale is in the pathname
-  if (defaultLocale === locale) {
+  if (defaultLocale === locale && !alreadyRewritten) {
     // we remove locale if pathname contains default locale, by redirecting
     if (pathname.startsWith(`/${locale}/`)) {
       // if pathname has subpath, remove "/locale", eg. from "/ca/something" to "/something"
