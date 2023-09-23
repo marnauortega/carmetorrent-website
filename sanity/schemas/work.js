@@ -2,6 +2,7 @@ import { orderRankField, orderRankOrdering } from "@sanity/orderable-document-li
 import { BsFolder as icon } from "react-icons/bs";
 import { isUniqueOtherThanLanguage } from "../utils/isUniqueOtherThanLanguage";
 import portableText from "./portableText";
+import MySanityImage from "@/components/MySanityImage/MySanityImage";
 
 export default {
   name: "work",
@@ -25,6 +26,12 @@ export default {
         source: "title",
         isUnique: isUniqueOtherThanLanguage,
       },
+    },
+    {
+      name: "image",
+      title: "Imatge",
+      type: "image",
+      options: { hotspot: true },
     },
     {
       name: "cycles",
@@ -87,4 +94,18 @@ export default {
     },
   ],
   orderings: [orderRankOrdering],
+  preview: {
+    select: {
+      title: "title",
+      language: "language",
+      media: "image",
+    },
+    prepare({ title, language, media }) {
+      return {
+        title: title,
+        subtitle: language.toUpperCase(),
+        media: media?.asset !== undefined ? <MySanityImage image={media} /> : undefined,
+      };
+    },
+  },
 };
