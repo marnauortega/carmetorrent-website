@@ -3,19 +3,23 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FiChevronRight } from "react-icons/fi";
+import MySanityImage from "../MySanityImage/MySanityImage";
 
 import styles from "./NavLink.module.css";
 
-const NavLink = ({ locale, slug, children }) => {
+const NavLink = ({ locale, slug, image, children }) => {
   const pathname = usePathname();
-  console.log(pathname);
   const active = pathname.includes(slug);
+  const home = pathname === "/";
 
   return (
-    <div className={`${styles.link} ${active ? styles.active : undefined}`}>
-      <Link href={`/${locale}/${slug}`}>{children}</Link>
-      <FiChevronRight className={styles.icon} />
-    </div>
+    <>
+      <div className={`${styles.link} ${active ? styles.active : undefined}`}>
+        <Link href={`/${locale}/work/${slug}`}>{children}</Link>
+        <FiChevronRight className={styles.icon} />
+      </div>
+      {image && home && <MySanityImage image={image} className={styles.image} />}
+    </>
   );
 };
 
