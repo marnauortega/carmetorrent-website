@@ -1,0 +1,23 @@
+.arrowDown {
+  position: sticky;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding-top: 40px;
+  background: linear-gradient(transparent 0%, var(--background-color) 40%);
+  transition: visibility 0.3s, opacity 0.3s;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.upFade {
+  position: fixed;
+  top: var(--padding-top);
+  left: var(--main-padding);
+  right: 0;
+  height: 70px;
+  background: linear-gradient(var(--background-color) 0%, transparent 50%);
+}
