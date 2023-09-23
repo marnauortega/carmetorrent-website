@@ -5,14 +5,11 @@ let locales = i18nConfig.supportedLanguages.map((lang) => lang.id);
 const defaultLocale = locales[0];
 
 export function middleware(request) {
-  const pathname = request.nextUrl.pathname;
+  let pathname = request.nextUrl.pathname;
   const locale = pathname.split("/")[1];
 
-  const alreadyRewritten = request.headers.get("x-middleware-rewrite");
-  console.log(alreadyRewritten, request.headers.get("x-middleware-rewrite"));
-
   // Check if the default locale is in the pathname
-  if (defaultLocale === locale && !alreadyRewritten) {
+  if (defaultLocale === locale) {
     // we remove locale if pathname contains default locale, by redirecting
     if (pathname.startsWith(`/${locale}/`)) {
       // if pathname has subpath, remove "/locale", eg. from "/ca/something" to "/something"
@@ -34,6 +31,9 @@ export function middleware(request) {
       // Pathname already includes "/"
       new URL(`/${defaultLocale}${pathname}`, request.url)
     );
+
+    // if (pathname === "/") pathname = "";
+    // return NextResponse.redirect(new URL(`/${defaultLocale}${pathname}`, request.url));
   }
 }
 
