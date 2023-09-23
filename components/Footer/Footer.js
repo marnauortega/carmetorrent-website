@@ -8,15 +8,17 @@ const Footer = async ({ locale }) => {
   const singletons = await getSingletons(locale);
 
   return (
-    <nav>
-      <ul className={styles.footerList}>
-        {singletons.map(({ title, slug }) => (
-          <li key={slug} className={styles.li}>
-            <Link href={`/${locale}/${slug}`}>{title}</Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <footer className={styles.footerList}>
+      <nav>
+        <ul>
+          {singletons.map(({ title, slug }) => (
+            <li key={slug} className={styles.li}>
+              <Link href={`/${locale}/${slug}`}>{title}</Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </footer>
   );
 };
 

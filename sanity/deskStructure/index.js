@@ -2,6 +2,7 @@ import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
 import { BsFolder as workIcon } from "react-icons/bs";
 import { BsPerson as bioIcon } from "react-icons/bs";
 import { BsEnvelope as contactIcon } from "react-icons/bs";
+import { ImGoogle } from "react-icons/im";
 
 export const deskStructure = (S, context) =>
   S.list()
@@ -30,6 +31,7 @@ export const deskStructure = (S, context) =>
             .params({
               type: "bio",
             })
+            .defaultOrdering([{ field: "order", direction: "asc" }])
             .menuItems([
               {
                 title: "Create new",
@@ -54,6 +56,7 @@ export const deskStructure = (S, context) =>
             .params({
               type: "contact",
             })
+            .defaultOrdering([{ field: "order", direction: "asc" }])
             .menuItems([
               {
                 title: "Create new",
@@ -62,6 +65,32 @@ export const deskStructure = (S, context) =>
                   params: {
                     type: "contact",
                     template: "contact",
+                  },
+                },
+              },
+            ])
+        ),
+      S.divider(),
+      S.listItem()
+        .title("Descripcions de Google")
+        .icon(ImGoogle)
+        .child(
+          S.documentList()
+            .title("Descripcions de Google")
+            .schemaType("googleDescriptions")
+            .filter("_type == $type")
+            .params({
+              type: "googleDescriptions",
+            })
+            .defaultOrdering([{ field: "order", direction: "asc" }])
+            .menuItems([
+              {
+                title: "Create new",
+                intent: {
+                  type: "create",
+                  params: {
+                    type: "googleDescriptions",
+                    template: "googleDescriptions",
                   },
                 },
               },

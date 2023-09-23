@@ -17,6 +17,5 @@ export async function isUniqueOtherThanLanguage(slug, context) {
     language == $language
   ][0]._id)`;
   const result = await client.fetch(query, params);
-  console.log(result);
   return result;
 }

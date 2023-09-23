@@ -2,6 +2,7 @@ import Logo from "@/components/Logo/Logo";
 import Nav from "@/components/Nav/Nav";
 import Footer from "@/components/Footer/Footer";
 import { Providers } from "@/components/Providers/Providers";
+import { getGoogleDescriptions } from "@/sanity/queries";
 
 import { Inter } from "next/font/google";
 const inter = Inter({
@@ -13,10 +14,17 @@ const inter = Inter({
 import "./global.css";
 import styles from "./layout.module.css";
 
-export const metadata = {
-  title: "Carme Torrent",
-  description: "Dansa contemporània",
-};
+export async function generateMetadata({ params: { locale } }) {
+  const title = locale === "ca" ? "Inici" : locale === "es" ? "Inicio" : "Home";
+  const [{ homeDescription }] = await getGoogleDescriptions(locale);
+  return {
+    title: {
+      template: "Carme Torrent | %s",
+      default: `Carme Torrent | ${title}`,
+    },
+    description: homeDescription,
+  };
+}
 
 export default function RootLayout({ children, params: { locale } }) {
   return (

@@ -30,7 +30,8 @@ export function getAllWorkTitlesAndSlugs(locale) {
   return createClient(clientConfig).fetch(groq`
     *[_type == "work" && language match "${locale}*"]|order(orderRank) {
       title,
-      "slug": slug.current 
+      "slug": slug.current,
+      image,
     }
     `);
 }
@@ -58,4 +59,18 @@ export function getImageColor(imageId) {
   [_type == "image"]
   [asset._ref == "${imageId}"]
   .asset->.metadata.palette.darkVibrant.background`);
+}
+
+export function getGoogleDescriptions(locale) {
+  return createClient(clientConfig).fetch(
+    groq`
+    *[_type == "googleDescriptions" && language match "${locale}*"] {
+      homeDescription,
+      studioDescription,
+      practiceDescription,
+      projectsDescription,
+    }
+    `,
+    { next: { revalidate: 60 } }
+  );
 }

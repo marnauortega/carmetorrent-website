@@ -22,6 +22,10 @@ export default {
     },
     portableText,
     {
+      name: "order",
+      type: "order",
+    },
+    {
       name: "language",
       type: "string",
       readOnly: true,

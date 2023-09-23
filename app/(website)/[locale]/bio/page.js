@@ -2,24 +2,32 @@ import LanguageToggler from "@/components/LanguageToggler/LanguageToggler";
 import { PortableText } from "@portabletext/react";
 import MyPortableTextComponents from "@/sanity/MyPortableTextComponents/MyPortableTextComponents";
 import MobileMenu from "@/components/MobileMenu/MobileMenu";
+import { getGoogleDescriptions, getPage } from "@/sanity/queries";
 
-import { getPage } from "@/sanity/queries";
-
-import styles from "../[slug]/page.module.css";
+import styles from "@/components/WorkClient/WorkClient.module.css";
 
 export const dynamic = "force-static";
 export const revalidate = 60;
+
+export async function generateMetadata({ params: { locale } }) {
+  const [{ title }] = await getPage("bio", locale);
+  const [{ bioDescription }] = await getGoogleDescriptions(locale);
+  return {
+    title,
+    description: bioDescription,
+  };
+}
 
 const BioPage = async ({ params }) => {
   const [{ title, content }] = await getPage("bio", params.locale);
   return (
     <>
-      <LanguageToggler params={params} />
-      <MobileMenu params={params} />
       <div className={styles.content}>
         <h1 className={styles.heading}>{title}</h1>
         <PortableText value={content} components={MyPortableTextComponents} />
       </div>
+      <LanguageToggler params={params} />
+      <MobileMenu params={params} />
     </>
   );
 };
