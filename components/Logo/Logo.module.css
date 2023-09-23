@@ -5,11 +5,15 @@
   background-color: var(--main-color);
   display: flex;
   align-items: center;
-  justify-self: center;
+  justify-content: center;
   position: fixed;
   top: var(--main-padding);
   left: var(--main-padding);
   z-index: 20;
+}
+
+.iconWrapper {
+  line-height: 0;
 }
 
 .icon {

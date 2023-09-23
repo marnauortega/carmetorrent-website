@@ -8,21 +8,28 @@
 =========================================== */
 
 @media (max-width: 1200px) {
-  .backgroundWrapper {
+  .background {
     position: fixed;
-    top: 0;
+    /* bottom: calc(100% - 105px); */
     left: 0;
     right: 0;
-    height: 105px;
-    z-index: 10;
+    bottom: calc(100% - 105px);
+    height: 100vh;
+    z-index: 0;
     background-color: var(--background-color);
+    /* transition: bottom 0.8s cubic-bezier(0.86, 0, 0.4, 1); */
   }
+
+  /* .backgroundOpen {
+    bottom: 0;
+  } */
 
   .menuHamb {
     display: block;
     position: fixed;
     top: 42px;
     right: var(--main-padding);
+    cursor: pointer;
   }
 
   .menuWrapper {
@@ -30,7 +37,7 @@
     position: fixed;
     inset: 0;
     padding: var(--padding-top) var(--main-padding) var(--main-padding);
-    background-color: var(--background-color);
+    /* background-color: var(--background-color); */
   }
 
   .menuWrapper > ul {

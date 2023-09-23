@@ -10,4 +10,5 @@
 .currentLocale {
   margin-bottom: 16px;
   display: inline-block;
+  text-decoration: underline;
 }
