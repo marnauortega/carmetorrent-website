@@ -24,7 +24,9 @@ const BioPage = async ({ params }) => {
     <>
       <div className={styles.content}>
         <h1 className={styles.heading}>{title}</h1>
-        <PortableText value={content} components={MyPortableTextComponents} />
+        <div className={styles.portableTextWrapper}>
+          <PortableText value={content} components={MyPortableTextComponents} />
+        </div>
       </div>
       <LanguageToggler params={params} />
       <MobileMenu params={params} />
