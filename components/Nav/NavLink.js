@@ -10,7 +10,7 @@ import styles from "./NavLink.module.css";
 const NavLink = ({ locale, slug, image, children }) => {
   const pathname = usePathname();
   const active = pathname.includes(slug);
-  const home = pathname === "/";
+  const home = ["/", "/ca", "/es", "/en"].includes(pathname);
 
   return (
     <>

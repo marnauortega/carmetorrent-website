@@ -11,7 +11,7 @@
 
 .nav {
   height: 100%;
-  overflow: scroll;
+  overflow-y: scroll;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   position: relative;

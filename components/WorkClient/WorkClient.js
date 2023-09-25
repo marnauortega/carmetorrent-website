@@ -65,7 +65,7 @@ const WorkClient = ({ work, nextWork, params }) => {
               ))}
             </dl>
           )}
-          <Link href={`/${locale}/${nextWork.slug}`} className={styles.nextWork}>
+          <Link href={`/${locale}/work/${nextWork.slug}`} className={styles.nextWork}>
             <p className="h2">{locale === "ca" ? "Següent obra" : locale === "es" ? "Sigüente obra" : "Next work"}</p>
             <div className={styles.nextTitle}>
               <span>{nextWork.title}</span>
