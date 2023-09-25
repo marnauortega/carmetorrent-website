@@ -12,7 +12,6 @@ const DownArrow = () => {
   useEffect(() => {
     let containers = document.querySelectorAll(".nav");
     containers = [...containers];
-    console.log(containers);
 
     const handleScroll = (e) => {
       const container = e.target;
@@ -23,8 +22,6 @@ const DownArrow = () => {
 
         setScrolledToTop(scrollTop === 0 ? true : false);
         setScrolledToBottom(scrollTop + clientHeight >= scrollHeight ? true : false);
-
-        console.log(scrollTop, typeof scrollTop);
       }
     };
 

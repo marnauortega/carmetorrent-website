@@ -14,7 +14,7 @@ const DesktopToggler = ({ params: { locale, slug }, pathname, translations }) =>
             let href = locale === "ca" ? `/${otherLocale.id}${pathname}` : pathname.replace(locale, otherLocale.id);
             // translate project slug
             if (slug && translations) {
-              const translatedSlug = translations.find((translation) => translation.language === otherLocale.id)?.slug;
+              const translatedSlug = translations.find((translation) => translation?.language === otherLocale.id)?.slug;
               href = href.replace(slug, translatedSlug);
             }
             return (
