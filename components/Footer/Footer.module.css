@@ -3,6 +3,7 @@
   bottom: var(--main-padding);
   right: var(--main-padding);
   text-align: right;
+  z-index: 2;
 }
 
 .footerList ul {
