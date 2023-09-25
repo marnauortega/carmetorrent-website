@@ -85,13 +85,19 @@ const MobileMenuClient = ({ params, singletons }) => {
                   <h2 className="h1">{locale === "ca" ? "obres" : locale === "es" ? "obras" : "work"}</h2>
                 </Link>
               </motion.li>
-              {singletons.map(({ title, slug }) => (
-                <motion.li key={slug} className={styles.li} variants={menuItem}>
-                  <Link href={`/${locale}/${slug}`}>
-                    <h2 className="h1">{title}</h2>
-                  </Link>
-                </motion.li>
-              ))}
+              {singletons.map(({ title, slug, translations }) => {
+                const defaultLocaleTranslation = translations.find((translation) => translation.language === "ca");
+                const defaultLocaleSlug = defaultLocaleTranslation.slug.current;
+                console.log(defaultLocaleSlug);
+                return (
+                  <motion.li key={slug} className={styles.li} variants={menuItem}>
+                    <Link href={`/${locale}/${defaultLocaleSlug}`}>
+                      {" "}
+                      <h2 className="h1">{title}</h2>
+                    </Link>
+                  </motion.li>
+                );
+              })}
             </ul>
             <motion.div variants={languageToggler}>
               <LanguageToggler params={params} mobile={true} />

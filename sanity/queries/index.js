@@ -50,6 +50,10 @@ export function getSingletons(locale) {
     *[(_type == "bio" || _type == "contact") && language match "${locale}*"] | order(title asc){
       title,
       "slug": slug.current,
+      "translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
+        slug,
+        language
+      },
     }`);
 }
 
