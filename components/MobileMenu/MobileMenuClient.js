@@ -66,7 +66,7 @@ const MobileMenuClient = ({ params, singletons }) => {
     <>
       <motion.div
         className={`${styles.background}`}
-        animate={{ y: menuOpen ? "100%" : 0 }}
+        animate={{ y: menuOpen ? "100%" : "105px" }}
         transition={{ duration: 0.6, type: "spring", stiffness: 175, damping: 40, delay: menuOpen ? 0 : 0.3 }}
       ></motion.div>
       <AnimatePresence>

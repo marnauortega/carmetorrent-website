@@ -33,3 +33,14 @@
 .li:last-of-type {
   padding-bottom: 0;
 }
+
+@media (max-width: 550px) {
+  .nav {
+    overflow-y: visible;
+    height: unset;
+  }
+
+  .navList {
+    padding-bottom: calc(1.5 * var(--main-padding));
+  }
+}

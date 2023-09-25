@@ -13,7 +13,8 @@
     /* bottom: calc(100% - 105px); */
     left: 0;
     right: 0;
-    bottom: calc(100% - 105px);
+    bottom: 100%;
+    transform: translateY(105px);
     height: 100vh;
     z-index: 0;
     background-color: var(--background-color);

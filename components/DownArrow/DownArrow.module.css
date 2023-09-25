@@ -36,3 +36,9 @@
   height: 70px;
   background: linear-gradient(var(--background-color) 0%, transparent 50%);
 }
+
+@media (max-width: 550px) {
+  .arrowDown {
+    display: none;
+  }
+}
