@@ -28,6 +28,11 @@ export default {
       },
     },
     {
+      name: "workType",
+      title: "Tipus d'obra",
+      type: "string",
+    },
+    {
       name: "image",
       title: "Imatge",
       type: "image",

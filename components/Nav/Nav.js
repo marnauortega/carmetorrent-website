@@ -11,10 +11,11 @@ const Nav = async ({ locale, className }) => {
     <aside className={`${styles.aside} ${className}`}>
       <nav className={`nav ${styles.nav}`} data-lenis-prevent>
         <ul className={styles.navList}>
-          {workTitles.map(({ title, slug, image }) => (
+          {workTitles.map(({ title, slug, workType, image }) => (
             <li key={slug} className={styles.li}>
               <NavLink locale={locale} slug={slug} image={image}>
                 {title}
+                <span>{workType}</span>
               </NavLink>
             </li>
           ))}

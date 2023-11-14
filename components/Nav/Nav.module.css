@@ -30,6 +30,12 @@
   padding-bottom: 16px;
 }
 
+.li span {
+  font-size: 12px;
+  padding-left: 18px;
+  opacity: 0.75;
+}
+
 .li:last-of-type {
   padding-bottom: 0;
 }

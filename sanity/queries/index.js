@@ -31,6 +31,7 @@ export function getAllWorkTitlesAndSlugs(locale) {
     *[_type == "work" && language match "${locale}*"]|order(orderRank) {
       title,
       "slug": slug.current,
+      workType,
       image,
     }
     `);
