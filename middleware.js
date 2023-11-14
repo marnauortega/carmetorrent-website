@@ -9,16 +9,16 @@ export function middleware(request) {
   const locale = pathname.split("/")[1];
 
   // Check if the default locale is in the pathname
-  if (defaultLocale === locale) {
-    // we remove locale if pathname contains default locale, by redirecting
-    if (pathname.startsWith(`/${locale}/`)) {
-      // if pathname has subpath, remove "/locale", eg. from "/ca/something" to "/something"
-      return NextResponse.redirect(new URL(pathname.replace(`/${locale}`, ""), request.url));
-    } else {
-      // if it doesn't, remove "locale", eg. from "/ca to "/"
-      return NextResponse.redirect(new URL(pathname.replace(`${locale}`, ""), request.url));
-    }
-  }
+  // if (defaultLocale === locale) {
+  //   // we remove locale if pathname contains default locale, by redirecting
+  //   if (pathname.startsWith(`/${locale}/`)) {
+  //     // if pathname has subpath, remove "/locale", eg. from "/ca/something" to "/something"
+  //     return NextResponse.redirect(new URL(pathname.replace(`/${locale}`, ""), request.url));
+  //   } else {
+  //     // if it doesn't, remove "locale", eg. from "/ca to "/"
+  //     return NextResponse.redirect(new URL(pathname.replace(`${locale}`, ""), request.url));
+  //   }
+  // }
 
   const pathnameIsMissingValidLocale = locales.every((locale) => {
     // If pathname isn't "/ca" and doesn't contain "/ca/", then it isn't valid
@@ -27,7 +27,7 @@ export function middleware(request) {
 
   if (pathnameIsMissingValidLocale) {
     // we rewrite pathnames without valid locale: rendered `/`, but showing `/ca`
-    return NextResponse.rewrite(
+    return NextResponse.redirect(
       // Pathname already includes "/"
       new URL(`/${defaultLocale}${pathname}`, request.url)
     );
