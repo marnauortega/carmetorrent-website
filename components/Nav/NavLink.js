@@ -18,7 +18,7 @@ const NavLink = ({ locale, slug, image, children }) => {
         <Link href={`/${locale}/work/${slug}`}>{children}</Link>
         <FiChevronRight className={styles.icon} />
       </div>
-      {image && home && <MySanityImage image={image} className={styles.image} />}
+      {/* {image && home && <MySanityImage image={image} className={styles.image} />} */}
     </>
   );
 };

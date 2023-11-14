@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import NavLink from "./NavLink";
 import { FiChevronDown } from "react-icons/fi";
 
-import styles from "./DownArrow.module.css";
+import styles from "./NavClient.module.css";
 
-const DownArrow = () => {
+const NavClient = ({ workTitles, locale }) => {
   const [scrolledToBottom, setScrolledToBottom] = useState(false);
   const [scrolledToTop, setScrolledToTop] = useState(true);
 
@@ -34,7 +35,18 @@ const DownArrow = () => {
 
   return (
     <>
-      <div className={`${styles.upFade} ${scrolledToTop ? styles.hidden : undefined}`}></div>
+      <nav className={`nav ${styles.nav} ${scrolledToBottom ? undefined : styles.clippedNav}`} data-lenis-prevent>
+        <ul className={styles.navList}>
+          {workTitles.map(({ title, slug, workType, image }) => (
+            <li key={slug} className={styles.li}>
+              <NavLink locale={locale} slug={slug} image={image}>
+                {title}
+                <span>{workType}</span>
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </nav>
       <div className={`${styles.arrowDown} ${scrolledToBottom ? styles.hidden : undefined}`}>
         <FiChevronDown />
       </div>
@@ -42,4 +54,4 @@ const DownArrow = () => {
   );
 };
 
-export default DownArrow;
+export default NavClient;

@@ -22,7 +22,7 @@
   transform: translateX(6px);
 }
 
-.link:hover + .image {
+/* .link:hover + .image {
   opacity: 1;
   visibility: visible;
   transition: opacity 0.5s ease, visibility 0.5s ease;
@@ -36,16 +36,14 @@
   left: 55%;
   top: 50%;
   transform: translate(-50%, -50%) scale(0.4);
-  /* height: 120px; */
-
   width: auto;
-}
+} */
 
 /* ===========================================
               RESPONSIVE: TABLET
 =========================================== */
 
-@media (max-width: 1200px) {
+/* @media (max-width: 1200px) {
   .image {
     right: var(--main-padding);
     bottom: var(--main-padding);
@@ -60,4 +58,4 @@
   .image {
     display: none;
   }
-}
+} */
