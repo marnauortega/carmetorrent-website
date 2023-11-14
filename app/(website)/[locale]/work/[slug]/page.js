@@ -17,14 +17,20 @@ const WorkPage = async ({ params }) => {
   const [{ slug }] = work;
   const works = await getAllWorkTitlesAndSlugs(locale);
 
-  let nextWork;
-  for (let i = 0; i < works.length; i++) {
-    if (works[i].slug === slug) {
-      nextWork = works.length !== i + 1 ? works[i + 1] : works[0];
-    }
-  }
+  // let nextWork;
+  // for (let i = 0; i < works.length; i++) {
+  //   if (works[i].slug === slug) {
+  //     nextWork = works.length !== i + 1 ? works[i + 1] : works[0];
+  //   }
+  // }
 
-  return <WorkClient work={work} nextWork={nextWork} params={params} />;
+  return (
+    <WorkClient
+      work={work}
+      // nextWork={nextWork}
+      params={params}
+    />
+  );
 };
 
 export default WorkPage;
