@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import WorkClient from "@/components/WorkClient/WorkClient";
 import { getWork, getAllWorkSlugs, getAllWorkTitlesAndSlugs } from "@/sanity/queries";
+import Nav from "@/components/Nav/Nav";
 
 // Static site generation
 export const generateStaticParams = async () => {

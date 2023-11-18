@@ -1,4 +1,5 @@
 .content {
+  width: fit-content;
   min-height: 100vh;
   padding: var(--padding-top) var(--main-padding) var(--main-padding) 3vw;
   box-sizing: border-box;
@@ -130,9 +131,14 @@
     display: block;
   }
 
+  .contentWrapper {
+    width: 100%;
+  }
+
   .content {
     display: block;
-    width: min(600px, 100%);
+    width: fit-content;
+    max-width: 600px;
     box-sizing: border-box;
     padding: var(--padding-top) var(--main-padding) var(--main-padding);
   }

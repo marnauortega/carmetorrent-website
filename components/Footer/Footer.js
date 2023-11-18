@@ -13,7 +13,6 @@ const Footer = async ({ locale }) => {
           {singletons.map(({ title, slug, translations }) => {
             const defaultLocaleTranslation = translations.find((translation) => translation.language === "ca");
             const defaultLocaleSlug = defaultLocaleTranslation.slug.current;
-            console.log(defaultLocaleSlug);
             return (
               <li key={slug} className={styles.li}>
                 <Link href={`/${locale}/${defaultLocaleSlug}`}>{title}</Link>

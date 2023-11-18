@@ -66,9 +66,17 @@ const MobileMenuClient = ({ params, singletons }) => {
     <>
       <motion.div
         className={`${styles.background}`}
-        animate={{ y: menuOpen ? "100%" : "105px" }}
-        transition={{ duration: 0.6, type: "spring", stiffness: 175, damping: 40, delay: menuOpen ? 0 : 0.3 }}
-      ></motion.div>
+        animate={{
+          y: menuOpen ? "100%" : "105px",
+          backgroundColor: menuOpen ? "rgba(250, 246, 241, 1)" : "rgba(250, 246, 241, 0)",
+        }}
+        transition={{
+          duration: 0.6,
+          type: "spring",
+          stiffness: 175,
+          damping: 40,
+          delay: menuOpen ? 0 : 0.3,
+        }}></motion.div>
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -77,8 +85,7 @@ const MobileMenuClient = ({ params, singletons }) => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            variants={menu}
-          >
+            variants={menu}>
             <ul>
               <motion.li variants={menuItem}>
                 <Link href={`/${locale}`}>
@@ -88,7 +95,6 @@ const MobileMenuClient = ({ params, singletons }) => {
               {singletons.map(({ title, slug, translations }) => {
                 const defaultLocaleTranslation = translations.find((translation) => translation.language === "ca");
                 const defaultLocaleSlug = defaultLocaleTranslation.slug.current;
-                console.log(defaultLocaleSlug);
                 return (
                   <motion.li key={slug} className={styles.li} variants={menuItem}>
                     <Link href={`/${locale}/${defaultLocaleSlug}`}>

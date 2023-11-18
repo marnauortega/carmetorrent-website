@@ -1,0 +1,14 @@
+.wrapper {
+  position: fixed;
+  left: 50%;
+  bottom: var(--main-padding);
+  transform: translateX(-50%);
+}
+
+.list a:first-child {
+  font-weight: 800;
+}
+
+.images a:nth-child(2) {
+  font-weight: 800;
+}

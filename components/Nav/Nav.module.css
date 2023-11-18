@@ -1,10 +1,21 @@
 .aside {
+  flex: 1;
   height: 100vh;
   /* position: fixed; */
   position: sticky;
   top: 0;
   /* top: var(--padding-top); */
-  width: fit-content;
+  width: 100%;
   padding: var(--padding-top) var(--main-padding) var(--main-padding);
   box-sizing: border-box;
+}
+
+/* ===========================================
+              RESPONSIVE: MOBILE
+=========================================== */
+
+@media (max-width: 1200px) {
+  .hidden {
+    display: none;
+  }
 }

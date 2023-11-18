@@ -1,6 +1,6 @@
 .body {
   font-family: "Courier New", Courier, monospace;
-  display: flex;
+  /* display: flex; */
   margin: 0;
   background-color: var(--background-color);
 }
@@ -15,16 +15,7 @@
 }
 
 .main {
-  flex: 1;
+  /* flex: 1; */
   z-index: 1;
-}
-
-/* ===========================================
-              RESPONSIVE: MOBILE
-=========================================== */
-
-@media (max-width: 1200px) {
-  .desktopNav {
-    display: none;
-  }
+  display: flex;
 }
