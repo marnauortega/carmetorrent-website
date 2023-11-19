@@ -1,7 +1,7 @@
 :root {
   --main-color: #880f66;
-  --background-color: rgb(250, 246, 241);
-  --main-padding: clamp(30px, 6vw, 50px);
+  --background-color: rgb(250, 241, 243);
+  --main-padding: clamp(20px, 6vw, 50px);
   --vertical-gap: 40px;
   --padding-top: 132px;
 }

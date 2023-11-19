@@ -67,8 +67,8 @@ const MobileMenuClient = ({ params, singletons }) => {
       <motion.div
         className={`${styles.background}`}
         animate={{
-          y: menuOpen ? "100%" : "105px",
-          backgroundColor: menuOpen ? "rgba(250, 246, 241, 1)" : "rgba(250, 246, 241, 0)",
+          y: menuOpen ? "0%" : "-100%",
+          // backgroundColor: menuOpen ? "rgba(250, 246, 241, 1)" : "rgba(250, 246, 241, 0)",
         }}
         transition={{
           duration: 0.6,

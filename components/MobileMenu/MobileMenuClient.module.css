@@ -10,15 +10,12 @@
 @media (max-width: 1200px) {
   .background {
     position: fixed;
-    /* bottom: calc(100% - 105px); */
+    top: 0;
     left: 0;
-    right: 0;
-    bottom: 100%;
-    transform: translateY(105px);
+    width: 100%;
     height: 100vh;
     z-index: 0;
-    /* background-color: var(--background-color); */
-    /* transition: bottom 0.8s cubic-bezier(0.86, 0, 0.4, 1); */
+    background-color: var(--background-color);
   }
 
   /* .backgroundOpen {
