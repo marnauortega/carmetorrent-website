@@ -70,6 +70,7 @@ const MobileMenuClient = ({ params, singletons }) => {
           y: menuOpen ? "0%" : "-100%",
           // backgroundColor: menuOpen ? "rgba(250, 246, 241, 1)" : "rgba(250, 246, 241, 0)",
         }}
+        initial={false}
         transition={{
           duration: 0.6,
           type: "spring",
