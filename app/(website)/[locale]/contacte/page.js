@@ -2,9 +2,13 @@ import LanguageToggler from "@/components/LanguageToggler/LanguageToggler";
 import { PortableText } from "@portabletext/react";
 import MyPortableTextComponents from "@/sanity/MyPortableTextComponents/MyPortableTextComponents";
 import MobileMenu from "@/components/MobileMenu/MobileMenu";
+import red from "../../../../public/red.svg";
+import eu from "../../../../public/eu.svg";
+import Image from "next/image";
 
 import { getPage, getGoogleDescriptions } from "@/sanity/queries";
 
+import contactStyles from "./page.module.css";
 import styles from "@/components/WorkClient/WorkClient.module.css";
 
 export const dynamic = "force-static";
@@ -26,13 +30,15 @@ const ContactPage = async ({ params }) => {
       <div className={styles.content}>
         <h1 className={styles.heading}>{title}</h1>
         <PortableText value={content} components={MyPortableTextComponents} />
-        {/* {
-        form && (
-          <form>
-
-          </form>
-        )
-      } */}
+        {params.locale === "ca" && (
+          <div className={contactStyles.funded}>
+            <p>Amb el finançament de:</p>
+            <Image src={red} width={201} height={61} alt="funded by red.es logo" />
+            <Image src={eu} width={197} height={44} alt="funded by european union logo" />
+          </div>
+        )}
+        {/* {params.locale === "es" &&}
+        {params.locale === "en" &&} */}
       </div>
       <LanguageToggler params={params} />
       <MobileMenu params={params} />
