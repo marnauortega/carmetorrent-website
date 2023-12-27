@@ -5,6 +5,9 @@ import ViewToggler from "@/components/ViewToggler/ViewToggler";
 import MySanityImage from "@/components/MySanityImage/MySanityImage";
 import Link from "next/link";
 
+export const dynamic = "force-static";
+export const revalidate = 1;
+
 import styles from "./page.module.css";
 
 const Images = async ({ params }) => {

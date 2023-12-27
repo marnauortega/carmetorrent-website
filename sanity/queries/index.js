@@ -83,7 +83,6 @@ export function getGoogleDescriptions(locale) {
       practiceDescription,
       projectsDescription,
     }
-    `,
-    { next: { revalidate: 60 } }
+    `
   );
 }
