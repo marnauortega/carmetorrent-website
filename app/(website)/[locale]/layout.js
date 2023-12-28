@@ -28,7 +28,7 @@ export default function RootLayout({ children, params: { locale } }) {
         <html lang="en">
           <body className={styles.body}>
             {/* <Image src={bg} width={852} height={640} alt="" className={styles.bg} /> */}
-            <div className={styles.bg}></div>
+            {/* <div className={styles.bg}></div> */}
             <Logo className={styles.logo} locale={locale} />
             <main className={styles.main}>{children}</main>
             <Footer locale={locale} />
