@@ -16,7 +16,7 @@ const Logo = ({ locale }) => {
   return (
     <header>
       <Link href={listState ? `/${locale}` : `/${locale}/images`} className={styles.logo}>
-        <AnimatePresence>
+        {/* <AnimatePresence>
           {pathname === `/${locale}` || pathname === `/${locale}/images` ? (
             ""
           ) : (
@@ -30,7 +30,7 @@ const Logo = ({ locale }) => {
               <ChevronLeft color="white" className={styles.icon} />
             </motion.div>
           )}
-        </AnimatePresence>
+        </AnimatePresence> */}
       </Link>
     </header>
   );
