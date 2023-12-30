@@ -3,6 +3,12 @@
   left: 50%;
   bottom: var(--main-padding);
   transform: translateX(-50%);
+  background-color: var(--background-color);
+  /* bottom: 0;
+  padding: 15px;
+  border-radius: 5px;
+  width: 100%;
+  text-align: center; */
 }
 
 .list a:first-child {
@@ -11,4 +17,14 @@
 
 .images a:nth-child(2) {
   font-weight: 800;
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    bottom: 0;
+    padding: 15px;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+  }
 }

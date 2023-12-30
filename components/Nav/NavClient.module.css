@@ -57,6 +57,16 @@
   opacity: 0;
 }
 
+@media (max-width: 650px) {
+  .arrowDown {
+    display: none;
+  }
+
+  .clippedNav {
+    clip-path: unset;
+  }
+}
+
 @media (max-width: 550px) {
   .nav {
     overflow-y: visible;
