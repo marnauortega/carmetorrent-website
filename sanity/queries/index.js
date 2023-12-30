@@ -28,7 +28,9 @@ export function getAllWorkSlugs() {
 
 export function getAllWorkImages(locale) {
   return createClient(clientConfig).fetch(groq`
-    *[_type == "work" && language match "${locale}*"]|order(orderRank) {
+    *[_type == "work" && language match "${locale}*"]|order(
+      *[_type == "translation.metadata" && references(^._id)][0].translations[_key == "ca"][0].value->orderRank
+      ) {
       "slug": slug.current,
       image,
     }
@@ -37,7 +39,9 @@ export function getAllWorkImages(locale) {
 
 export function getAllWorkTitlesAndSlugs(locale) {
   return createClient(clientConfig).fetch(groq`
-    *[_type == "work" && language match "${locale}*"]|order(orderRank) {
+    *[_type == "work" && language match "${locale}*"]|order(
+      *[_type == "translation.metadata" && references(^._id)][0].translations[_key == "ca"][0].value->orderRank
+      ) {
       title,
       "slug": slug.current,
       workType,
