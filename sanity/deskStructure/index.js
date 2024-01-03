@@ -116,7 +116,7 @@ export const deskStructure = (S, context) =>
                 width="560"
                 height="315"
                 style={{ margin: "20px", position: "absolute" }}
-                src="https://www.youtube.com/embed/JSeZgbQ0MsQ"
+                src="https://www.youtube.com/embed/XLVvaKq_hcg"
                 title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
