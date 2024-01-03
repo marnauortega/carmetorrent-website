@@ -2,7 +2,9 @@ import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
 import { BsFolder as workIcon } from "react-icons/bs";
 import { BsPerson as bioIcon } from "react-icons/bs";
 import { BsEnvelope as contactIcon } from "react-icons/bs";
+import { FiYoutube } from "react-icons/fi";
 import { ImGoogle } from "react-icons/im";
+import { LuPalette } from "react-icons/lu";
 
 export const deskStructure = (S, context) =>
   S.list()
@@ -72,6 +74,11 @@ export const deskStructure = (S, context) =>
         ),
       S.divider(),
       S.listItem()
+        .title("Colors")
+        .id("colors")
+        .icon(LuPalette)
+        .child(S.document().schemaType("colors").documentId("colors")),
+      S.listItem()
         .title("Descripcions de Google")
         .icon(ImGoogle)
         .child(
@@ -95,5 +102,25 @@ export const deskStructure = (S, context) =>
                 },
               },
             ])
+        ),
+      S.divider(),
+      S.listItem()
+        .title("Video introductori")
+        .icon(FiYoutube)
+        .child(
+          S.component()
+            .id("introduccio")
+            .title("Video introductori")
+            .component(
+              <iframe
+                width="560"
+                height="315"
+                style={{ margin: "20px", position: "absolute" }}
+                src="https://www.youtube.com/embed/JSeZgbQ0MsQ"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            )
         ),
     ]);

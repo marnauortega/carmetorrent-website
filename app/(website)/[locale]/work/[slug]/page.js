@@ -3,9 +3,6 @@ import WorkClient from "@/components/WorkClient/WorkClient";
 import { getWork, getAllWorkSlugs, getAllWorkTitlesAndSlugs } from "@/sanity/queries";
 import Nav from "@/components/Nav/Nav";
 
-export const dynamic = "force-static";
-export const revalidate = 1;
-
 // Static site generation
 export const generateStaticParams = async () => {
   const workSlugs = await getAllWorkSlugs();

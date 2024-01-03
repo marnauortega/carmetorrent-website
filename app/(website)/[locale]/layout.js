@@ -1,7 +1,7 @@
 import Logo from "@/components/Logo/Logo";
 import Footer from "@/components/Footer/Footer";
 import { Providers } from "@/components/Providers/Providers";
-import { getGoogleDescriptions } from "@/sanity/queries";
+import { getColors, getGoogleDescriptions } from "@/sanity/queries";
 import Image from "next/image";
 import bg from "@/public/bg.png";
 import ViewProvider from "@/components/Providers/ViewProvider";
@@ -21,7 +21,10 @@ export async function generateMetadata({ params: { locale } }) {
   };
 }
 
-export default function RootLayout({ children, params: { locale } }) {
+export default async function RootLayout({ children, params: { locale } }) {
+  const [{ logoColor }] = await getColors();
+  console.log(logoColor.hex);
+
   return (
     <Providers>
       <ViewProvider>
@@ -29,7 +32,7 @@ export default function RootLayout({ children, params: { locale } }) {
           <body className={styles.body}>
             {/* <Image src={bg} width={852} height={640} alt="" className={styles.bg} /> */}
             {/* <div className={styles.bg}></div> */}
-            <Logo className={styles.logo} locale={locale} />
+            <Logo className={styles.logo} locale={locale} color={logoColor.hex} />
             <main className={styles.main}>{children}</main>
             <Footer locale={locale} />
           </body>

@@ -78,6 +78,11 @@ export function getImageColor(imageId) {
   .asset->.metadata.palette.darkVibrant.background`);
 }
 
+export function getColors() {
+  return createClient(clientConfig).fetch(groq`
+  *[_type == "colors"]`);
+}
+
 export function getGoogleDescriptions(locale) {
   return createClient(clientConfig).fetch(
     groq`

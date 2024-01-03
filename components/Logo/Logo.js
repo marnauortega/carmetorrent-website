@@ -8,14 +8,17 @@ import { FiChevronLeft as ChevronLeft } from "react-icons/fi";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 
-const Logo = ({ locale }) => {
+const Logo = ({ locale, color }) => {
   const { listState } = useContext(ViewContext);
   const router = useRouter();
   const pathname = usePathname();
 
   return (
     <header>
-      <Link href={listState ? `/${locale}` : `/${locale}/images`} className={styles.logo}>
+      <Link
+        href={listState ? `/${locale}` : `/${locale}/images`}
+        className={styles.logo}
+        style={{ backgroundColor: color }}>
         <AnimatePresence>
           {pathname === `/${locale}` || pathname === `/${locale}/images` ? (
             ""
