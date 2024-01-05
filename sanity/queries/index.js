@@ -82,7 +82,7 @@ export function getColors() {
   return createClient(clientConfig).fetch(
     groq`
   *[_type == "colors"]`,
-    { next: { tags: ["revalidate"] } }
+    { cache: "no-store", next: { tags: ["revalidate"] } }
   );
 }
 
