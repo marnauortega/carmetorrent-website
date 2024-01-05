@@ -79,8 +79,11 @@ export function getImageColor(imageId) {
 }
 
 export function getColors() {
-  return createClient(clientConfig).fetch(groq`
-  *[_type == "colors"]`);
+  return createClient(clientConfig).fetch(
+    groq`
+  *[_type == "colors"]`,
+    { next: { tags: ["revalidate"] } }
+  );
 }
 
 export function getGoogleDescriptions(locale) {
