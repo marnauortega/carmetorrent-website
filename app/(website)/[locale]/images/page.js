@@ -7,6 +7,9 @@ import Link from "next/link";
 
 import styles from "./page.module.css";
 
+export const dynamic = "force-static";
+export const revalidate = 1;
+
 const Images = async ({ params }) => {
   const workImages = await getAllWorkImages(params.locale);
   console.log(workImages);

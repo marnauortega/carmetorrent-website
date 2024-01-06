@@ -9,6 +9,9 @@ import ViewProvider from "@/components/Providers/ViewProvider";
 import "./global.css";
 import styles from "./layout.module.css";
 
+export const dynamic = "force-static";
+export const revalidate = 1;
+
 export async function generateMetadata({ params: { locale } }) {
   const title = locale === "ca" ? "Inici" : locale === "es" ? "Inicio" : "Home";
   const [{ homeDescription }] = await getGoogleDescriptions(locale);
