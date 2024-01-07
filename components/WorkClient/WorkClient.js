@@ -4,9 +4,7 @@ import LanguageToggler from "@/components/LanguageToggler/LanguageToggler";
 import { Fragment } from "react";
 import { PortableText } from "@portabletext/react";
 import MyPortableTextComponents from "@/sanity/MyPortableTextComponents/MyPortableTextComponents";
-import MobileMenu from "@/components/MobileMenu/MobileMenu";
 import { motion } from "framer-motion";
-import Nav from "../Nav/Nav";
 
 import styles from "./WorkClient.module.css";
 
@@ -16,7 +14,6 @@ const WorkClient = ({ work, nextWork, params }) => {
 
   return (
     <>
-      {/* <Nav locale={params.locale} hideOnMobile={true} /> */}
       <motion.div
         className={styles.contentWrapper}
         initial={{ x: 30, opacity: 0 }}
@@ -77,7 +74,6 @@ const WorkClient = ({ work, nextWork, params }) => {
       </motion.div>
 
       <LanguageToggler params={params} translations={translations} />
-      {/* <MobileMenu params={params} /> */}
     </>
   );
 };

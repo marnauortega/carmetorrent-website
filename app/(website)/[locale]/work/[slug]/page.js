@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import WorkClient from "@/components/WorkClient/WorkClient";
 import { getWork, getAllWorkSlugs, getAllWorkTitlesAndSlugs } from "@/sanity/queries";
 import Nav from "@/components/Nav/Nav";
+import MobileMenu from "@/components/MobileMenu/MobileMenu";
 
 export const dynamic = "force-static";
 export const revalidate = 1;
@@ -29,11 +30,15 @@ const WorkPage = async ({ params }) => {
   // }
 
   return (
-    <WorkClient
-      work={work}
-      // nextWork={nextWork}
-      params={params}
-    />
+    <>
+      <Nav locale={params.locale} hideOnMobile={true} />
+      <WorkClient
+        work={work}
+        // nextWork={nextWork}
+        params={params}
+      />
+      <MobileMenu params={params} />
+    </>
   );
 };
 
