@@ -41,7 +41,7 @@ const NavClient = ({ workTitles, locale }) => {
             <li key={slug} className={styles.li}>
               <NavLink locale={locale} slug={slug} image={image}>
                 {title}
-                <span>{workType}</span>
+                {workType && <span>{workType}</span>}
               </NavLink>
             </li>
           ))}
