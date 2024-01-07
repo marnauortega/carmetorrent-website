@@ -16,7 +16,7 @@ const WorkClient = ({ work, nextWork, params }) => {
 
   return (
     <>
-      <Nav locale={params.locale} hideOnMobile={true} />
+      {/* <Nav locale={params.locale} hideOnMobile={true} /> */}
       <motion.div
         className={styles.contentWrapper}
         initial={{ x: 30, opacity: 0 }}
@@ -66,18 +66,18 @@ const WorkClient = ({ work, nextWork, params }) => {
               </dl>
             )}
             {/* <Link href={`/${locale}/work/${nextWork.slug}`} className={styles.nextWork}>
-            <p className="h2">{locale === "ca" ? "Següent obra" : locale === "es" ? "Sigüente obra" : "Next work"}</p>
-            <div className={styles.nextTitle}>
-              <span>{nextWork.title}</span>
-              <FiChevronRight className={styles.icon} />
-            </div>
-          </Link> */}
+              <p className="h2">{locale === "ca" ? "Següent obra" : locale === "es" ? "Sigüente obra" : "Next work"}</p>
+              <div className={styles.nextTitle}>
+                <span>{nextWork.title}</span>
+                <FiChevronRight className={styles.icon} />
+              </div>
+            </Link>  */}
           </div>
         </div>
       </motion.div>
 
       <LanguageToggler params={params} translations={translations} />
-      <MobileMenu params={params} />
+      {/* <MobileMenu params={params} /> */}
     </>
   );
 };

@@ -9,10 +9,6 @@ export function getWork(workSlug, locale) {
       cycles,
       content,
       "chart": chart[]{title, content},
-      "translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
-        "slug": slug.current,
-        language
-      },
     }
     `);
 }

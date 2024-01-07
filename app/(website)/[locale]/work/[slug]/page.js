@@ -18,8 +18,8 @@ const WorkPage = async ({ params }) => {
 
   if (!work?.length) return notFound();
 
-  const [{ slug }] = work;
-  const works = await getAllWorkTitlesAndSlugs(locale);
+  // const [{ slug }] = work;
+  // const works = await getAllWorkTitlesAndSlugs(locale);
 
   // let nextWork;
   // for (let i = 0; i < works.length; i++) {

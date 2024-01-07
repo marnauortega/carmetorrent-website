@@ -17,6 +17,7 @@ export default {
       name: "title",
       title: "Títol",
       type: "string",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "slug",
@@ -26,11 +27,13 @@ export default {
         source: "title",
         isUnique: isUniqueOtherThanLanguage,
       },
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "workType",
       title: "Tipus d'obra",
       type: "string",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "image",
