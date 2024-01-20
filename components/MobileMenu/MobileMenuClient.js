@@ -88,11 +88,11 @@ const MobileMenuClient = ({ params, singletons }) => {
             exit="exit"
             variants={menu}>
             <ul>
-              <motion.li variants={menuItem}>
+              {/* <motion.li variants={menuItem}>
                 <Link href={`/${locale}`}>
                   <h2 className="h1">{locale === "ca" ? "obres" : locale === "es" ? "obras" : "work"}</h2>
                 </Link>
-              </motion.li>
+              </motion.li> */}
               {singletons.map(({ title, slug, translations }) => {
                 const defaultLocaleTranslation = translations.find((translation) => translation.language === "ca");
                 const defaultLocaleSlug = defaultLocaleTranslation.slug.current;
@@ -100,7 +100,7 @@ const MobileMenuClient = ({ params, singletons }) => {
                   <motion.li key={slug} className={styles.li} variants={menuItem}>
                     <Link href={`/${locale}/${defaultLocaleSlug}`}>
                       {" "}
-                      <h2 className="h1">{title}</h2>
+                      <p>{title}</p>
                     </Link>
                   </motion.li>
                 );

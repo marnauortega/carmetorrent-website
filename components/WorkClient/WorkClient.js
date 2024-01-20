@@ -40,7 +40,7 @@ const WorkClient = ({ work, nextWork, params }) => {
             {chart?.length > 0 && (
               <>
                 <p className={`h2 ${styles.chartHeading}`}>
-                  {locale === "ca" ? "Fitxa Artística" : locale === "es" ? "Ficha Artística" : "Cast"}
+                  {locale === "ca" ? "fitxa artística" : locale === "es" ? "ficha artística" : "cast"}
                 </p>
                 {chart?.map(({ title, content }) => (
                   <div key={title} className={styles.chartContent}>
