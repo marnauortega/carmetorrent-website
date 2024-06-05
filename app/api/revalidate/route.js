@@ -3,9 +3,10 @@ import { revalidatePath } from "next/cache";
 import { revalidateTag } from "next/cache";
 
 export async function POST(req) {
-  const body = await req.json();
-  console.log("revalidate", body);
-  if (body.slug) {
+  const secret = request.nextUrl.searchParams.get("secret");
+  // console.log("revalidate", body);
+  if (process.env.SANITY_WEBHOOK_SECRET === secret && body.slug) {
+    const body = await req.json();
     if (body._type === "work") {
       revalidatePath(`/${body.language}/work/${body.slug.current}`);
       revalidatePath(`/${body.language}`);
