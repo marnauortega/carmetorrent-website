@@ -7,7 +7,6 @@ export async function POST(req) {
   console.log("revalidate", body);
   if (body.slug) {
     if (body._type === "work") {
-      console.log(`/${body.language}/work/${body.slug.current}`);
       revalidatePath(`/${body.language}/work/${body.slug.current}`);
       revalidatePath(`/${body.language}`);
       revalidatePath(`/${body.language}/images`);

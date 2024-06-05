@@ -2,7 +2,8 @@ import { createClient, groq } from "next-sanity";
 import clientConfig from "@/sanity/clientConfig";
 
 export function getWork(workSlug, locale) {
-  return createClient(clientConfig).fetch(groq`
+  return createClient(clientConfig).fetch(
+    groq`
     *[_type == "work" && slug.current == "${workSlug}" && language match "${locale}*" ]{
       title,
       "slug": slug.current,
@@ -10,31 +11,40 @@ export function getWork(workSlug, locale) {
       content,
       "chart": chart[]{title, content},
     }
-    `);
+    `,
+    { cache: "no-store" }
+  );
 }
 
 export function getAllWorkSlugs() {
-  return createClient(clientConfig).fetch(groq`
+  return createClient(clientConfig).fetch(
+    groq`
     *[_type == "work"]{
       "locale": language,
       "slug": slug.current,
     }
-    `);
+    `,
+    { cache: "no-store" }
+  );
 }
 
 export function getAllWorkImages(locale) {
-  return createClient(clientConfig).fetch(groq`
+  return createClient(clientConfig).fetch(
+    groq`
     *[_type == "work" && language match "${locale}*"]|order(
       *[_type == "translation.metadata" && references(^._id)][0].translations[_key == "ca"][0].value->orderRank
       ) {
       "slug": slug.current,
       image,
     }
-    `);
+    `,
+    { cache: "no-store" }
+  );
 }
 
 export function getAllWorkTitlesAndSlugs(locale) {
-  return createClient(clientConfig).fetch(groq`
+  return createClient(clientConfig).fetch(
+    groq`
     *[_type == "work" && language match "${locale}*"]|order(
       *[_type == "translation.metadata" && references(^._id)][0].translations[_key == "ca"][0].value->orderRank
       ) {
@@ -42,20 +52,26 @@ export function getAllWorkTitlesAndSlugs(locale) {
       "slug": slug.current,
       workType,
     }
-    `);
+    `,
+    { cache: "no-store" }
+  );
 }
 
 export function getPage(page, locale) {
-  return createClient(clientConfig).fetch(groq`
+  return createClient(clientConfig).fetch(
+    groq`
     *[_type == "${page}" && language match "${locale}*"]{
       title,
       "slug": slug.current,
       content,
-    }`);
+    }`,
+    { cache: "no-store" }
+  );
 }
 
 export function getSingletons(locale) {
-  return createClient(clientConfig).fetch(groq`
+  return createClient(clientConfig).fetch(
+    groq`
     *[(_type == "bio" || _type == "contact") && language match "${locale}*"] | order(title asc){
       title,
       "slug": slug.current,
@@ -63,15 +79,20 @@ export function getSingletons(locale) {
         slug,
         language
       },
-    }`);
+    }`,
+    { cache: "no-store" }
+  );
 }
 
 export function getImageColor(imageId) {
-  return createClient(clientConfig).fetch(groq`
+  return createClient(clientConfig).fetch(
+    groq`
   *[_type == "work"].content[]
   [_type == "image"]
   [asset._ref == "${imageId}"]
-  .asset->.metadata.palette.darkVibrant.background`);
+  .asset->.metadata.palette.darkVibrant.background`,
+    { cache: "no-store" }
+  );
 }
 
 export function getColors() {
@@ -91,6 +112,7 @@ export function getGoogleDescriptions(locale) {
       practiceDescription,
       projectsDescription,
     }
-    `
+    `,
+    { cache: "no-store" }
   );
 }
