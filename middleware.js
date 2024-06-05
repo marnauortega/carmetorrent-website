@@ -22,6 +22,8 @@ export function middleware(request) {
 
   const pathnameIsMissingValidLocale = locales.every((locale) => {
     if (pathname === "/robots.txt") return;
+    // To exclude public folder
+    if (pathname.includes(".")) return;
     // If pathname isn't "/ca" and doesn't contain "/ca/", then it isn't valid
     return pathname !== `/${locale}` && !pathname.startsWith(`/${locale}/`);
   });
