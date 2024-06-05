@@ -2,15 +2,17 @@ import Logo from "@/components/Logo/Logo";
 import Footer from "@/components/Footer/Footer";
 import { Providers } from "@/components/Providers/Providers";
 import { getColors, getGoogleDescriptions } from "@/sanity/queries";
-import Image from "next/image";
-import bg from "@/public/bg.png";
 import ViewProvider from "@/components/Providers/ViewProvider";
 
 import "./global.css";
 import styles from "./layout.module.css";
 
-export const dynamic = "force-static";
-export const revalidate = 1;
+// export const dynamic = "force-static";
+// export const revalidate = 1;
+
+export async function generateStaticParams() {
+  return [{ locale: "ca" }, { locale: "en" }, { locale: "es" }];
+}
 
 export async function generateMetadata({ params: { locale } }) {
   const title = locale === "ca" ? "Inici" : locale === "es" ? "Inicio" : "Home";
@@ -26,8 +28,6 @@ export async function generateMetadata({ params: { locale } }) {
 
 export default async function RootLayout({ children, params: { locale } }) {
   const [{ logoColor }] = await getColors();
-  console.log(logoColor.hex);
-
   return (
     <Providers>
       <ViewProvider>

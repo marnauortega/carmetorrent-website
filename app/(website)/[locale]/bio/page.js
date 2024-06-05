@@ -7,7 +7,7 @@ import { getGoogleDescriptions, getPage } from "@/sanity/queries";
 import styles from "@/components/WorkClient/WorkClient.module.css";
 
 export const dynamic = "force-static";
-export const revalidate = 1;
+// export const revalidate = 1;
 
 export async function generateMetadata({ params: { locale } }) {
   const [{ title }] = await getPage("bio", locale);

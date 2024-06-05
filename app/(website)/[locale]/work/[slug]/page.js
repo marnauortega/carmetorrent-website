@@ -5,7 +5,7 @@ import Nav from "@/components/Nav/Nav";
 import MobileMenu from "@/components/MobileMenu/MobileMenu";
 
 export const dynamic = "force-static";
-export const revalidate = 1;
+// export const revalidate = 1;
 
 // Static site generation
 export const generateStaticParams = async () => {
