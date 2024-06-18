@@ -1,2 +1,9 @@
+# *
 User-agent: *
 Allow: /
+
+# Host
+Host: https://carmetorrent.com
+
+# Sitemaps
+Sitemap: https://carmetorrent.com/sitemap.xml
