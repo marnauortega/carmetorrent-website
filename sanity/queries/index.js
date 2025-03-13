@@ -106,7 +106,7 @@ export function getImageColor(imageId) {
 export function getColors() {
   return createClient(clientConfig).fetch(
     groq`
-  *[_type == "colors"]`,
+  *[_type == "colors"][0]`,
     { cache: "no-store", next: { tags: ["revalidate"] } }
   );
 }

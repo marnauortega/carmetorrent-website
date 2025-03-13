@@ -15,12 +15,9 @@ const Logo = ({ locale, color }) => {
 
   return (
     <header>
-      <Link
-        href={listState ? `/${locale}` : `/${locale}/images`}
-        className={styles.logo}
-        style={{ backgroundColor: color }}>
+      <Link href={`/${locale}`} className={styles.logo} style={{ backgroundColor: color }}>
         <AnimatePresence>
-          {pathname === `/${locale}` || pathname === `/${locale}/images` ? (
+          {pathname === `/${locale}` ? (
             ""
           ) : (
             <motion.div

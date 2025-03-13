@@ -27,7 +27,7 @@ export async function generateMetadata({ params: { locale } }) {
 }
 
 export default async function RootLayout({ children, params: { locale } }) {
-  const [{ logoColor }] = await getColors();
+  const { logoColor } = await getColors();
   return (
     <Providers>
       <ViewProvider>
