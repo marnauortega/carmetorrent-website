@@ -62,7 +62,7 @@ export function getAllWorkTitlesAndSlugs(locale) {
       workType,
     }
     `,
-    { cache: "no-store" }
+    { cache: "no-store", next: { tags: ["nav"] } }
   );
 }
 

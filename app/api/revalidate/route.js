@@ -13,6 +13,10 @@ export async function POST(req) {
       revalidatePath(`/${body.language}/work/${body.slug.current}`);
       // localeIds.forEach((locale) => revalidatePath(`/${locale}`));
       localeIds.forEach((locale) => revalidatePath(`/${locale}`));
+      // As this doesn't seem to work
+      revalidateTag("nav");
+      // then we'll revalidate everything
+      revalidatePath("", "layout");
 
       // revalidatePath(`/${body.language}/images`);
     }
