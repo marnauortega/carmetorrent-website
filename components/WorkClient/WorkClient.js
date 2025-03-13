@@ -10,7 +10,7 @@ import styles from "./WorkClient.module.css";
 
 const WorkClient = ({ work, nextWork, params }) => {
   const locale = params.locale;
-  const [{ title, cycles, content, chart, translations }] = work;
+  const [{ title, cycles, content, chart }] = work;
 
   return (
     <>
@@ -73,7 +73,7 @@ const WorkClient = ({ work, nextWork, params }) => {
         </div>
       </motion.div>
 
-      <LanguageToggler params={params} translations={translations} />
+      <LanguageToggler params={params} />
     </>
   );
 };

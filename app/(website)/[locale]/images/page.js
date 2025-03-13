@@ -25,7 +25,7 @@ const Images = async ({ params }) => {
             )
         )}
       </div>
-      <ViewToggler locale={params.locale} />
+      {/* <ViewToggler locale={params.locale} /> */}
       <MobileMenu params={params} />
     </>
   );

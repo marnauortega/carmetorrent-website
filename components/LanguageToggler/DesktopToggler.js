@@ -2,7 +2,7 @@ import Link from "next/link";
 import locales from "@/utils/locales";
 import styles from "./DesktopToggler.module.css";
 
-const DesktopToggler = ({ params: { locale, slug }, pathname, translations }) => {
+const DesktopToggler = ({ params: { locale }, pathname }) => {
   return (
     <div className={styles.wrapper}>
       <span className={styles.currentLocale}>{locale}</span>
@@ -12,11 +12,6 @@ const DesktopToggler = ({ params: { locale, slug }, pathname, translations }) =>
           .map((otherLocale) => {
             // replace locale
             let href = pathname.replace(locale, otherLocale.id);
-            // translate project slug
-            if (slug && translations) {
-              const translatedSlug = translations.find((translation) => translation?.language === otherLocale.id)?.slug;
-              href = href.replace(slug, translatedSlug);
-            }
             return (
               <Link key={otherLocale.id} href={href}>
                 {otherLocale.id}

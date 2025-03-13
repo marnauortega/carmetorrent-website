@@ -5,7 +5,7 @@ import locales from "@/utils/locales";
 import styles from "./MobileToggler.module.css";
 import { AnimatePresence, motion } from "framer-motion";
 
-const MobileToggler = ({ params: { locale, slug }, pathname, translations }) => {
+const MobileToggler = ({ params: { locale }, pathname }) => {
   const menu = {
     hidden: {
       transition: {
@@ -47,11 +47,6 @@ const MobileToggler = ({ params: { locale, slug }, pathname, translations }) => 
         .map((otherLocale) => {
           // replace locale
           let href = pathname.replace(locale, otherLocale.id);
-          // translate project slug
-          if (slug && translations) {
-            const translatedSlug = translations.find((translation) => translation.language === otherLocale.id)?.slug;
-            href = href.replace(slug, translatedSlug);
-          }
           return (
             <motion.div variants={menuItem}>
               <Link key={otherLocale.id} href={href}>

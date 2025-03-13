@@ -1,7 +1,6 @@
 import { orderRankField, orderRankOrdering } from "@sanity/orderable-document-list";
 import { BsFolder as icon } from "react-icons/bs";
 import { isUniqueOtherThanLanguage } from "../utils/isUniqueOtherThanLanguage";
-import portableText from "./portableText";
 import MySanityImage from "@/components/MySanityImage/MySanityImage";
 
 export default {
@@ -33,14 +32,13 @@ export default {
       name: "workType",
       title: "Tipus d'obra",
       type: "string",
-      validation: (Rule) => Rule.required(),
     },
-    {
-      name: "image",
-      title: "Imatge",
-      type: "image",
-      options: { hotspot: true },
-    },
+    // {
+    //   name: "image",
+    //   title: "Imatge",
+    //   type: "image",
+    //   options: { hotspot: true },
+    // },
     {
       name: "cycles",
       title: "Cicles",
@@ -56,18 +54,100 @@ export default {
               title: "Any",
               type: "string",
             },
-            portableText,
+            {
+              name: "descriptionCa",
+              title: "Descripció (CA)",
+              type: "array",
+              of: [
+                { type: "block" },
+                {
+                  type: "image",
+                  options: {
+                    metadata: ["blurhash", "lqip", "palette"],
+                  },
+                },
+              ],
+            },
+            {
+              name: "descriptionEs",
+              title: "Descripció (ES)",
+              type: "array",
+              of: [
+                { type: "block" },
+                {
+                  type: "image",
+                  options: {
+                    metadata: ["blurhash", "lqip", "palette"],
+                  },
+                },
+              ],
+            },
+            {
+              name: "descriptionEn",
+              title: "Descripció (EN)",
+              type: "array",
+              of: [
+                { type: "block" },
+                {
+                  type: "image",
+                  options: {
+                    metadata: ["blurhash", "lqip", "palette"],
+                  },
+                },
+              ],
+            },
           ],
           preview: {
             select: {
               title: "year",
-              subtitle: "content",
+              subtitle: "descriptionCa",
             },
           },
         },
       ],
     },
-    portableText,
+    {
+      name: "contentCa",
+      title: "Contingut (CA)",
+      type: "array",
+      of: [
+        { type: "block" },
+        {
+          type: "image",
+          options: {
+            metadata: ["blurhash", "lqip", "palette"],
+          },
+        },
+      ],
+    },
+    {
+      name: "contentEs",
+      title: "Contingut (ES)",
+      type: "array",
+      of: [
+        { type: "block" },
+        {
+          type: "image",
+          options: {
+            metadata: ["blurhash", "lqip", "palette"],
+          },
+        },
+      ],
+    },
+    {
+      name: "contentEn",
+      title: "Contingut (EN)",
+      type: "array",
+      of: [
+        { type: "block" },
+        {
+          type: "image",
+          options: {
+            metadata: ["blurhash", "lqip", "palette"],
+          },
+        },
+      ],
+    },
     {
       name: "chart",
       title: "Fitxa artística",
@@ -79,39 +159,85 @@ export default {
           type: "object",
           fields: [
             {
-              name: "title",
+              name: "internationalizedTitle",
               title: "Títol",
-              type: "string",
+              type: "internationalizedArrayString",
             },
-            portableText,
+            {
+              name: "descriptionCa",
+              title: "Descripció (CA)",
+              type: "array",
+              of: [
+                { type: "block" },
+                {
+                  type: "image",
+                  options: {
+                    metadata: ["blurhash", "lqip", "palette"],
+                  },
+                },
+              ],
+            },
+            {
+              name: "descriptionEs",
+              title: "Descripció (ES)",
+              type: "array",
+              of: [
+                { type: "block" },
+                {
+                  type: "image",
+                  options: {
+                    metadata: ["blurhash", "lqip", "palette"],
+                  },
+                },
+              ],
+            },
+            {
+              name: "descriptionEn",
+              title: "Descripció (EN)",
+              type: "array",
+              of: [
+                { type: "block" },
+                {
+                  type: "image",
+                  options: {
+                    metadata: ["blurhash", "lqip", "palette"],
+                  },
+                },
+              ],
+            },
           ],
           preview: {
             select: {
-              title: "title",
-              subtitle: "content",
+              title: "internationalizedTitle",
+              description: "descriptionCa",
+            },
+            prepare({ title, description }) {
+              const block = (description || []).find((block) => block._type === "block");
+
+              return {
+                title: title.find((t) => t._key === "ca")?.value,
+                subtitle: block
+                  ? block.children
+                      .filter((child) => child._type === "span")
+                      .map((span) => span.text)
+                      .join("")
+                  : "No title",
+              };
             },
           },
         },
       ],
-    },
-    {
-      name: "language",
-      type: "string",
-      readOnly: true,
-      hidden: true,
     },
   ],
   orderings: [orderRankOrdering],
   preview: {
     select: {
       title: "title",
-      language: "language",
       media: "image",
     },
-    prepare({ title, language, media }) {
+    prepare({ title, media }) {
       return {
         title: title,
-        subtitle: language.toUpperCase(),
         media: media?.asset !== undefined ? <MySanityImage image={media} /> : undefined,
       };
     },

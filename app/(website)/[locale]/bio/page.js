@@ -10,7 +10,7 @@ export const dynamic = "force-static";
 // export const revalidate = 1;
 
 export async function generateMetadata({ params: { locale } }) {
-  const [{ title }] = await getPage("bio", locale);
+  const { title } = await getPage("bio", locale);
   const [{ bioDescription }] = await getGoogleDescriptions(locale);
   return {
     title,
@@ -19,7 +19,7 @@ export async function generateMetadata({ params: { locale } }) {
 }
 
 const BioPage = async ({ params }) => {
-  const [{ title, content }] = await getPage("bio", params.locale);
+  const { title, content } = await getPage("bio", params.locale);
   return (
     <>
       <div className={styles.content}>

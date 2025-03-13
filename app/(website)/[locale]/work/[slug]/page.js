@@ -8,10 +8,11 @@ export const dynamic = "force-static";
 // export const revalidate = 1;
 
 // Static site generation
-export const generateStaticParams = async () => {
-  const workSlugs = await getAllWorkSlugs();
-  return workSlugs;
-};
+// export const generateStaticParams = async () => {
+//   const workSlugs = await getAllWorkSlugs();
+//   console.log(workSlugs);
+//   return workSlugs;
+// };
 
 const WorkPage = async ({ params }) => {
   const locale = params.locale;

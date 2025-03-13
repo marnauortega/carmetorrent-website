@@ -15,63 +15,40 @@ export const deskStructure = (S, context) =>
         type: "work",
         title: "Obres",
         icon: workIcon,
-        filter: `language == $lang`,
-        params: {
-          lang: "ca",
-        },
+        // filter: `language == $lang`,
+        // params: {
+        //   lang: "ca",
+        // },
         S,
         context,
       }),
-      S.listItem()
-        .title("Bio")
-        .icon(bioIcon)
-        .child(
-          S.documentList()
-            .title("Bio")
-            .schemaType("bio")
-            .filter("_type == $type")
-            .params({
-              type: "bio",
-            })
-            .defaultOrdering([{ field: "order", direction: "asc" }])
-            .menuItems([
-              {
-                title: "Create new",
-                intent: {
-                  type: "create",
-                  params: {
-                    type: "bio",
-                    template: "bio",
-                  },
-                },
-              },
-            ])
-        ),
-      S.listItem()
-        .title("Contacte")
-        .icon(contactIcon)
-        .child(
-          S.documentList()
-            .title("Contacte")
-            .schemaType("contact")
-            .filter("_type == $type")
-            .params({
-              type: "contact",
-            })
-            .defaultOrdering([{ field: "order", direction: "asc" }])
-            .menuItems([
-              {
-                title: "Create new",
-                intent: {
-                  type: "create",
-                  params: {
-                    type: "contact",
-                    template: "contact",
-                  },
-                },
-              },
-            ])
-        ),
+      S.listItem().title("Bio").icon(bioIcon).child(S.document().schemaType("bio").documentId("bio")),
+      S.listItem().title("Contacte").icon(contactIcon).child(S.document().schemaType("contact").documentId("contact")),
+      // S.listItem()
+      //   .title("Contacte")
+      //   .icon(contactIcon)
+      //   .child(
+      //     S.documentList()
+      //       .title("Contacte")
+      //       .schemaType("contact")
+      //       .filter("_type == $type")
+      //       .params({
+      //         type: "contact",
+      //       })
+      //       .defaultOrdering([{ field: "order", direction: "asc" }])
+      //       .menuItems([
+      //         {
+      //           title: "Create new",
+      //           intent: {
+      //             type: "create",
+      //             params: {
+      //               type: "contact",
+      //               template: "contact",
+      //             },
+      //           },
+      //         },
+      //       ])
+      //   ),
       S.divider(),
       S.listItem()
         .title("Colors")

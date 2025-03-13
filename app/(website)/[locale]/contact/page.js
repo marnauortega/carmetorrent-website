@@ -15,7 +15,7 @@ export const dynamic = "force-static";
 // export const revalidate = 1;
 
 export async function generateMetadata({ params: { locale } }) {
-  const [{ title }] = await getPage("contact", locale);
+  const { title } = await getPage("contact", locale);
   const [{ contactDescription }] = await getGoogleDescriptions(locale);
   return {
     title,
@@ -24,19 +24,27 @@ export async function generateMetadata({ params: { locale } }) {
 }
 
 const ContactPage = async ({ params }) => {
-  const [{ title, content }] = await getPage("contact", params.locale);
+  const { title, content } = await getPage("contact", params.locale);
   return (
     <>
       <div className={styles.content}>
         <h1 className={styles.heading}>{title}</h1>
         <PortableText value={content} components={MyPortableTextComponents} />
-        {params.locale === "ca" && (
-          <div className={contactStyles.funded}>
-            <p>Amb el finançament de:</p>
-            <Image src={red} width={201} height={61} alt="funded by red.es logo" />
-            <Image src={eu} width={197} height={44} alt="funded by european union logo" />
-          </div>
-        )}
+
+        <div className={contactStyles.funded}>
+          <p>
+            {params.locale === "ca"
+              ? "Amb el finançament de:"
+              : params.locale === "es"
+                ? "Con el apoyo de:"
+                : params.locale === "en"
+                  ? "Funded by:"
+                  : ""}
+          </p>
+          <Image src={red} width={201} height={61} alt="funded by red.es logo" />
+          <Image src={eu} width={197} height={44} alt="funded by european union logo" />
+        </div>
+
         {/* {params.locale === "es" &&}
         {params.locale === "en" &&} */}
       </div>

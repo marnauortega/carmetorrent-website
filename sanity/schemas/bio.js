@@ -7,9 +7,9 @@ export default {
   type: "document",
   fields: [
     {
-      name: "title",
+      name: "internationalizedTitle",
       title: "Títol",
-      type: "string",
+      type: "internationalizedArrayString",
     },
     {
       name: "slug",
@@ -20,26 +20,57 @@ export default {
         isUnique: isUniqueOtherThanLanguage,
       },
     },
-    portableText,
     {
-      name: "order",
-      type: "order",
+      name: "contentCa",
+      title: "Contingut (CA)",
+      type: "array",
+      of: [
+        { type: "block" },
+        {
+          type: "image",
+          options: {
+            metadata: ["blurhash", "lqip", "palette"],
+          },
+        },
+      ],
     },
     {
-      name: "language",
-      type: "string",
-      readOnly: true,
-      hidden: true,
+      name: "contentEs",
+      title: "Contingut (ES)",
+      type: "array",
+      of: [
+        { type: "block" },
+        {
+          type: "image",
+          options: {
+            metadata: ["blurhash", "lqip", "palette"],
+          },
+        },
+      ],
+    },
+    {
+      name: "contentEn",
+      title: "Contingut (EN)",
+      type: "array",
+      of: [
+        { type: "block" },
+        {
+          type: "image",
+          options: {
+            metadata: ["blurhash", "lqip", "palette"],
+          },
+        },
+      ],
     },
   ],
   preview: {
     select: {
-      title: "title",
+      title: "internationalizedTitle",
       subtitle: "language",
     },
     prepare({ title, subtitle }) {
       return {
-        title,
+        title: title.find((t) => t._key === "ca")?.value,
         subtitle: subtitle.toUpperCase(),
       };
     },

@@ -10,12 +10,10 @@ const Footer = async ({ locale }) => {
     <footer className={styles.footerList}>
       <nav>
         <ul>
-          {singletons.map(({ title, slug, translations }) => {
-            const defaultLocaleTranslation = translations.find((translation) => translation.language === "ca");
-            const defaultLocaleSlug = defaultLocaleTranslation.slug.current;
+          {singletons.map(({ title, slug }) => {
             return (
               <li key={slug} className={styles.li}>
-                <Link href={`/${locale}/${defaultLocaleSlug}`}>{title}</Link>
+                <Link href={`/${locale}/${slug}`}>{title}</Link>
               </li>
             );
           })}

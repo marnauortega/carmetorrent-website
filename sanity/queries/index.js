@@ -4,12 +4,24 @@ import clientConfig from "@/sanity/clientConfig";
 export function getWork(workSlug, locale) {
   return createClient(clientConfig).fetch(
     groq`
-    *[_type == "work" && slug.current == "${workSlug}" && language match "${locale}*" ]{
+    *[_type == "work" && slug.current == "${workSlug}" ]{
       title,
       "slug": slug.current,
-      cycles,
-      content,
-      "chart": chart[]{title, content},
+      "cycles": cycles[]{
+        year,
+        "${locale}" == 'ca' => {"content": descriptionCa} ,
+        "${locale}" == 'es' => {"content": descriptionEs},
+        "${locale}" == 'en' => {"content": descriptionEn},
+      },
+      "${locale}" == 'ca' => {"content": contentCa},
+      "${locale}" == 'es' => {"content": contentEs},
+      "${locale}" == 'en' => {"content": contentEn},
+      "chart": chart[]{
+        "title": internationalizedTitle[_key == "${locale}"][0].value, 
+        "${locale}" == 'ca' => {"content": descriptionCa} ,
+        "${locale}" == 'es' => {"content": descriptionEs},
+        "${locale}" == 'en' => {"content": descriptionEn},
+      },
     }
     `,
     { cache: "no-store" }
@@ -20,7 +32,6 @@ export function getAllWorkSlugs() {
   return createClient(clientConfig).fetch(
     groq`
     *[_type == "work"]{
-      "locale": language,
       "slug": slug.current,
     }
     `,
@@ -31,7 +42,7 @@ export function getAllWorkSlugs() {
 export function getAllWorkImages(locale) {
   return createClient(clientConfig).fetch(
     groq`
-    *[_type == "work" && language match "${locale}*"]|order(
+    *[_type == "work"]|order(
       *[_type == "translation.metadata" && references(^._id)][0].translations[_key == "ca"][0].value->orderRank
       ) {
       "slug": slug.current,
@@ -45,9 +56,7 @@ export function getAllWorkImages(locale) {
 export function getAllWorkTitlesAndSlugs(locale) {
   return createClient(clientConfig).fetch(
     groq`
-    *[_type == "work" && language match "${locale}*"]|order(
-      *[_type == "translation.metadata" && references(^._id)][0].translations[_key == "ca"][0].value->orderRank
-      ) {
+    *[_type == "work"]|order(orderRank) {
       title,
       "slug": slug.current,
       workType,
@@ -60,11 +69,14 @@ export function getAllWorkTitlesAndSlugs(locale) {
 export function getPage(page, locale) {
   return createClient(clientConfig).fetch(
     groq`
-    *[_type == "${page}" && language match "${locale}*"]{
-      title,
+    *[_type == "${page}"]{
+      _id,
+      "title": internationalizedTitle[_key == "${locale}"][0].value,
       "slug": slug.current,
-      content,
-    }`,
+      "${locale}" == 'ca' => {"content": contentCa},
+      "${locale}" == 'es' => {"content": contentEs},
+      "${locale}" == 'en' => {"content": contentEn},
+    }[0]`,
     { cache: "no-store" }
   );
 }
@@ -72,13 +84,9 @@ export function getPage(page, locale) {
 export function getSingletons(locale) {
   return createClient(clientConfig).fetch(
     groq`
-    *[(_type == "bio" || _type == "contact") && language match "${locale}*"] | order(title asc){
-      title,
+    *[(_type == "bio" || _type == "contact")]{
+      "title": internationalizedTitle[_key == "${locale}"][0].value,
       "slug": slug.current,
-      "translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
-        slug,
-        language
-      },
     }`,
     { cache: "no-store" }
   );
@@ -106,7 +114,7 @@ export function getColors() {
 export function getGoogleDescriptions(locale) {
   return createClient(clientConfig).fetch(
     groq`
-    *[_type == "googleDescriptions" && language match "${locale}*"] {
+    *[_type == "googleDescriptions"] {
       homeDescription,
       studioDescription,
       practiceDescription,

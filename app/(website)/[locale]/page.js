@@ -18,7 +18,7 @@ export default function Home({ params }) {
     <>
       <LanguageToggler params={params} />
       <Nav locale={params.locale} />
-      <ViewToggler locale={params.locale} list={true} />
+      {/* <ViewToggler locale={params.locale} list={true} /> */}
       <MobileMenu params={params} />
     </>
   );
