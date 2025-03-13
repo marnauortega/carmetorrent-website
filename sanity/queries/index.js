@@ -39,6 +39,17 @@ export function getAllWorkSlugs() {
   );
 }
 
+export function getTitleFromSlug(slug) {
+  return createClient(clientConfig).fetch(
+    groq`
+    *[_type == "work" && slug.current == "${slug}" ]{
+      title 
+    }[0].title
+    `,
+    { cache: "no-store" }
+  );
+}
+
 export function getAllWorkImages(locale) {
   return createClient(clientConfig).fetch(
     groq`

@@ -9,7 +9,7 @@ const NotFound = async () => {
   const { logoColor } = await getColors();
   return (
     <div>
-      <Logo locale={"/es"} color={logoColor?.hex} />
+      <Logo locale="es" color={logoColor?.hex} />
       <div className={styles.wrapper}>
         <h1 className="h1">Pàgina no trobada</h1>
         <p>La pàgina que busques no existeix</p>

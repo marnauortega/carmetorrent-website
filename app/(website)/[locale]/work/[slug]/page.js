@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import WorkClient from "@/components/WorkClient/WorkClient";
-import { getWork, getAllWorkSlugs, getAllWorkTitlesAndSlugs } from "@/sanity/queries";
+import { getWork, getTitleFromSlug } from "@/sanity/queries";
 import Nav from "@/components/Nav/Nav";
 import MobileMenu from "@/components/MobileMenu/MobileMenu";
 
@@ -13,6 +13,14 @@ export const dynamic = "force-static";
 //   console.log(workSlugs);
 //   return workSlugs;
 // };
+
+export async function generateMetadata({ params: { slug } }) {
+  const title = await getTitleFromSlug(slug);
+  console.log(title);
+  return {
+    title: title,
+  };
+}
 
 const WorkPage = async ({ params }) => {
   const locale = params.locale;

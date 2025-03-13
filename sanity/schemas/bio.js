@@ -66,12 +66,10 @@ export default {
   preview: {
     select: {
       title: "internationalizedTitle",
-      subtitle: "language",
     },
-    prepare({ title, subtitle }) {
+    prepare({ title }) {
       return {
         title: title.find((t) => t._key === "ca")?.value,
-        subtitle: subtitle.toUpperCase(),
       };
     },
   },
