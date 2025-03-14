@@ -89,15 +89,28 @@ export const deskStructure = (S, context) =>
             .id("introduccio")
             .title("Video introductori")
             .component(
-              <iframe
-                width="560"
-                height="315"
-                style={{ margin: "20px", position: "absolute" }}
-                src="https://www.youtube.com/embed/XLVvaKq_hcg"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
+              <>
+                <div style={{ margin: "20px" }}>
+                  <p>Tutorial Nou</p>
+                  <iframe
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/7734JMhohGo"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+                  <p>Tutorial antic</p>
+                  <iframe
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/XLVvaKq_hcg"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+                </div>
+              </>
             )
         ),
     ]);
