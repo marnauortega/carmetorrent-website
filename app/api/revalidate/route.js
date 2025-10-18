@@ -10,8 +10,8 @@ export async function POST(req) {
   if (process.env.SANITY_WEBHOOK_SECRET === secret && body.slug) {
     const localeIds = locales.map((locale) => locale.id);
     if (body._type === "work") {
-      revalidatePath(`/${body.language}/work/${body.slug.current}`);
-      // localeIds.forEach((locale) => revalidatePath(`/${locale}`));
+      localeIds.forEach((locale) =>
+      revalidatePath(`/${locale}/work/${body.slug.current}`));
       localeIds.forEach((locale) => revalidatePath(`/${locale}`));
       // As this doesn't seem to work
       revalidateTag("nav");
@@ -23,7 +23,7 @@ export async function POST(req) {
     if (body._type === "colors") {
       revalidateTag("revalidate");
     }
-    if (body._type === "bio" || body._type === "contact") revalidatePath(`/${body.language}/${body.slug.current}`);
+    if (body._type === "bio" || body._type === "contact")  localeIds.forEach((locale) => revalidatePath(`/${locale}/${body.slug.current}`));
   }
   return NextResponse.json({ revalidated: true, now: Date.now() });
 }
